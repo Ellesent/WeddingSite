@@ -6,12 +6,12 @@ const NavigationBar = () => {
     const font = "font-serif";
     return (
         <>
-        <div className="mt-10 flex flex-col items-center">
-            <p className="text-4xl">FRANCESCA</p>
-            <p className="text-xs">AND</p>
-            <p className="text-4xl">DOMINIC</p>
+        <div className="flex flex-col items-center">
+            <p className={"text-4xl " + font}>FRANCESCA</p>
+            <p className={"text-xs " + font}>AND</p>
+            <p className={"text-4xl " + font}>DOMINIC</p>
         </div>
-        <div className="mt-5 flex flex-row justify-evenly">
+        <div className="mt-5 flex flex-row justify-evenly bg-red-300">
             <Link href='/'>
                 <a className={font}>Home</a>
             </Link>
@@ -23,6 +23,9 @@ const NavigationBar = () => {
             </Link>
             <Link href='/travel'>
                 <a className={font}>Travel</a>
+            </Link>
+            <Link href='/admin'>
+                <a className={font}>Admin</a>
             </Link>
         </div>
         </>
