@@ -11,7 +11,7 @@ const NavigationBar = () => {
             <p className={"text-xs " + font}>AND</p>
             <p className={"text-4xl " + font}>DOMINIC</p>
         </div>
-        <div className="mt-5 flex flex-row justify-evenly bg-red-300">
+        <div className="mt-5 flex flex-row justify-evenly bg-rose-300">
             <Link href='/'>
                 <a className={font}>Home</a>
             </Link>

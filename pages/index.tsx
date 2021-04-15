@@ -1,10 +1,14 @@
 import Image from 'next/image'
+import Link from 'next/link'
 
 export default function Home() {
   return (
     <div className="flex items-center flex-col">
-      <img className="m-5" src="/mainimage.png" alt="main image" width="900"/>
-      <p className="font-serif">Summer 2022</p>
+       <p className="mt-5 font-serif">Summer 2022</p>
+      <img className="m-5" src="/mainimage.png" alt="main image" width="1200"/>
+      <Link href="/rsvp">
+      <button className="font-serif text-5xl border-4 border-yellow-300 p-3 m-3 border-dotted hover:bg-coolGray-100">RSVP</button>
+      </Link>
     </div>
   )
 }
