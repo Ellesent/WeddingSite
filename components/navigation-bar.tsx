@@ -1,10 +1,16 @@
 
 import Link from 'next/link'
 
-export const NavigationBar = () => {
+const NavigationBar = () => {
 
     const font = "font-serif";
     return (
+        <>
+        <div className="mt-10 flex flex-col items-center">
+            <p className="text-4xl">FRANCESCA</p>
+            <p className="text-xs">AND</p>
+            <p className="text-4xl">DOMINIC</p>
+        </div>
         <div className="mt-5 flex flex-row justify-evenly">
             <Link href='/'>
                 <a className={font}>Home</a>
@@ -19,5 +25,8 @@ export const NavigationBar = () => {
                 <a className={font}>Travel</a>
             </Link>
         </div>
+        </>
     )
 }
+
+export {NavigationBar}

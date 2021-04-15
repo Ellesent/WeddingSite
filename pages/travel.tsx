@@ -1,3 +1,5 @@
-export const Travel = () => {
+const Travel = () => {
 
 }
+
+export default Travel

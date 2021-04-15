@@ -1,3 +1,5 @@
-export const Venue = () => {
-    
+const Venue = () => {
+
 }
+
+export default Venue
