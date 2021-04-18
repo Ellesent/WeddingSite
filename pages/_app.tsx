@@ -1,5 +1,5 @@
 import 'tailwindcss/tailwind.css'
-import { Layout } from '../components/Layout'
+import { Layout } from '../components/layout'
 import {NavigationBar} from '../components/navigation-bar'
 
 function MyApp({ Component, pageProps }) {
