@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "@react-firebase/auth": "^0.2.10",
+    "@tailwindcss/forms": "^0.3.2",
     "@types/gapi": "0.0.39",
     "firebase": "^8.4.1",
     "next": "10.1.3",
