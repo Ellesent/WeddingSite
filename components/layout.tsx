@@ -1,3 +1,5 @@
+import styles from '../styles/Layout.module.css'
+
 interface Props {
     children: React.ReactNode
 }
@@ -5,7 +7,7 @@ interface Props {
 const Layout = (props: Props) => {
 
     return (
-        <main className="m-10">
+        <main className={styles.color}>
             {props.children}
         </main>
     )
