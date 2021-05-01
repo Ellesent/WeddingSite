@@ -7,7 +7,7 @@ interface Props {
 const Layout = (props: Props) => {
 
     return (
-        <main className={styles.color}>
+        <main className={`h-screen ${styles.color}`}>
             {props.children}
         </main>
     )
