@@ -18,35 +18,26 @@ const GuestListItem = () => {
         <>
             {exampleGuestList.map(guest => (
                 <>
-                <a>{guest.Name}</a>
-                <a>{guest.Number}</a>
-                <a>{guest.Email}</a>
+                    <a>{guest.Name}</a>
+                    <a>{guest.Number}</a>
+                    <a>{guest.Email}</a>
+                    <a>{guest.Address}</a>
+                    <a>{guest.Status}</a>
+                    <a>{guest.URL}</a>
+                    <a>{guest.Allergies}</a>
                 </>
             ))}
         </>
     );
 }
 
-const GuestListHeaders = ({ headers }) => {
-
-
-
-    return (
-        <>
-            {headers.map(header => (
-                <a className="">{header}</a>
-            ))}
-
-        </>
-    )
-}
-
 
 const GuestList = () => {
     const headers = ["Name", "# in Party", "Email", "Address", "Status", "RSVP URL", "Food Allergies"]
     return (
-        <div className={`grid grid-cols-${headers.length} bg-yellow-100 m-5 border`}>
-            <GuestListHeaders headers={headers}></GuestListHeaders>
+        // guest list table
+        <div className={`grid grid-cols-${headers.length}  bg-yellow-100 m-5 border items-center justify-items-center `}>
+            {headers.map(header => (<a key={header} className="">{header}</a>))}  
             <GuestListItem></GuestListItem>
         </div>
     )
