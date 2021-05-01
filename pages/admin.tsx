@@ -1,6 +1,7 @@
 import { FirebaseAuthConsumer } from '@react-firebase/auth';
 import { useState } from 'react';
 import firebase from "firebase/app";
+import { GuestList } from '../components/GuestList';
 
 const Admin = () => {
     const [username, setUsername] = useState("");
@@ -36,6 +37,7 @@ const Admin = () => {
                     <a className="flex-none p-5">Venue Information</a>
                     <a className="flex-none p-5">Site Properties</a>
                 </div>
+                <GuestList></GuestList>
             </div>
             :
             <div className="flex flex-col items-start m-5">
