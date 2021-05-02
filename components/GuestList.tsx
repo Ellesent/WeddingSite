@@ -1,6 +1,6 @@
 
 
-const GuestListItem = () => {
+const GuestListItems = () => {
 
 
     const exampleGuestList = [{
@@ -17,15 +17,15 @@ const GuestListItem = () => {
     return (
         <>
             {exampleGuestList.map(guest => (
-                <>
-                    <a>{guest.Name}</a>
-                    <a>{guest.Number}</a>
-                    <a>{guest.Email}</a>
-                    <a>{guest.Address}</a>
-                    <a>{guest.Status}</a>
-                    <a>{guest.URL}</a>
-                    <a>{guest.Allergies}</a>
-                </>
+                <div className="table-row divide-x border-b text-center" key={guest.Name + guest.Email}>
+                    <a className="table-cell">{guest.Name}</a>
+                    <a className="table-cell">{guest.Number}</a>
+                    <a className="table-cell">{guest.Email}</a>
+                    <a className="table-cell">{guest.Address}</a>
+                    <a className="table-cell">{guest.Status}</a>
+                    <a className="table-cell">{guest.URL}</a>
+                    <a className="table-cell">{guest.Allergies}</a>
+                </div>
             ))}
         </>
     );
@@ -36,9 +36,13 @@ const GuestList = () => {
     const headers = ["Name", "# in Party", "Email", "Address", "Status", "RSVP URL", "Food Allergies"]
     return (
         // guest list table
-        <div className={`grid grid-cols-${headers.length}  bg-yellow-100 m-5 border items-center justify-items-center `}>
-            {headers.map(header => (<a key={header} className="">{header}</a>))}  
-            <GuestListItem></GuestListItem>
+        <div className={`table w-full bg-yellow-100 m-5 border-collapse`}>
+            <div className="table-row-group">
+                <div className="table-row headers divide-x border-b text-center">
+                    {headers.map(header => (<a key={header} className="table-cell">{header}</a>))}
+                </div>
+                <GuestListItems></GuestListItems>
+            </div>
         </div>
     )
 }

@@ -4,7 +4,7 @@ import config from "../config.json"
 const Venue = () => {
 
     return (
-        <div className="mt-5">
+        <div className="m-5">
             <p>Name: Semiahmoo Resort</p>
             <p className="pb-5">Address: 9565 Semiahmoo Pkwy Blaine, WA 98230</p>
             <Maps

@@ -31,11 +31,12 @@ const Admin = () => {
 
     return (
         user ?
+            // Side navigation bar for admin page
             <div className="flex m-5">
                 <div className="side-bar flex flex-col bg-rose-300 p-5 items-center border border-coolGray-500 rounded divide-y divide-coolGray-500">
-                    <a className="flex-none p-5">Guest List</a>
-                    <a className="flex-none p-5">Venue Information</a>
-                    <a className="flex-none p-5">Site Properties</a>
+                    <a className="p-5">Guest List</a>
+                    <a className="p-5">Venue Information</a>
+                    <a className="p-5">Site Properties</a>
                 </div>
                 <GuestList></GuestList>
             </div>
