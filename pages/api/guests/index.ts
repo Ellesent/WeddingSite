@@ -3,6 +3,7 @@ import db from '../../../utils/firebasedb';
 import { Guest } from '../../../utils/Types';
 
 const regRef = db.collection('guests');
+
 const getAllGuests = async (): Promise<Guest[]> => {
     const snapshot = await regRef.get();
     if (snapshot.empty) return [];
@@ -15,7 +16,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
             const ans = await regRef.add(req.body);
             return res.status(200).json({ id: ans.id, ...req.body });
         case 'GET':
-            
+            return res.status(200).json(await getAllGuests())
         default:
             return res.status(200).json({message: "not implemented"});
     }
