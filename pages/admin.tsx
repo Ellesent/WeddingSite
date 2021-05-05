@@ -20,7 +20,6 @@ const Admin = () => {
 
     const [adminPanelSelected, setAdminPanelSelected] = useState(SideBar.GuestList);
 
-
     const handleSubmit = async (event) => {
         // remove previous error
         setError("");
@@ -39,8 +38,8 @@ const Admin = () => {
 
     // figure out which panel to display
     let panel = <></>
-    
-    switch(adminPanelSelected) {
+
+    switch (adminPanelSelected) {
         case SideBar.GuestList: {
             panel = <GuestListPanel></GuestListPanel>
             break;
@@ -65,14 +64,14 @@ const Admin = () => {
             // Side navigation bar for admin page
             <div className="flex m-5">
                 <div className="side-bar flex flex-col flex-none bg-rose-300 p-5 items-center border border-coolGray-500 rounded divide-y divide-coolGray-500">
-                    <button onClick={() => {setAdminPanelSelected(SideBar.GuestList)}} className="p-5">Guest List</button>
-                    <button onClick={() => {setAdminPanelSelected(SideBar.VenueInformation)}} className="p-5">Venue Information</button>
+                    <button onClick={() => { setAdminPanelSelected(SideBar.GuestList) }} className="p-5">Guest List</button>
+                    <button onClick={() => { setAdminPanelSelected(SideBar.VenueInformation) }} className="p-5">Venue Information</button>
                     <button className="p-5">Website Properties</button>
                 </div>
                 {panel}
             </div>
             :
-            <div className="flex flex-col items-start m-5">
+            <div className="flex flex-col items-center m-5">
                 <p>Email</p>
                 <input className="border" type="email" placeholder="email" onChange={(event) => setUsername(event.target.value)} value={username} />
                 <p>Password</p>
@@ -84,10 +83,25 @@ const Admin = () => {
 }
 
 const GuestListPanel = () => {
+    const [showAddGuest, setShowAddGuest] = useState(false);
     return (
         <div className="flex flex-col flex-auto">
             <GuestList></GuestList>
-            <button className="border">Add Guest</button>
+            <button className="border-1 bg-yellow-400 justify-self-center self-center p-2" onClick={() => { setShowAddGuest(true) }}>Add Guest</button>
+            {showAddGuest && <AddGuestSection />}
+        </div>
+    )
+}
+
+const AddGuestSection = () => {
+
+    return (
+        <div className="flex m-5 justify-evenly">
+            <input type="text" placeholder="Party Name" />
+            <input type="number" placeholder="# in Party"/>
+            <input type="email" placeholder="Email Address"/>
+            <input type="text" placeholder="Physical Address"/>
+            <input type="text" placeholder="Food Allergies"/>
         </div>
     )
 }
