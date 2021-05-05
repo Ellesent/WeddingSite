@@ -5,10 +5,10 @@ const Venue = () => {
 
     return (
         <div className="m-5">
-            <p>Name: Semiahmoo Resort</p>
-            <p className="pb-5">Address: 9565 Semiahmoo Pkwy Blaine, WA 98230</p>
+            <p>Name: Clay Venues</p>
+            <p className="pb-5">Address: 10 N. Wahsatch Ave. Colorado Springs, CO 80903</p>
             <Maps
-                isMarkerShown
+                isMarkerShown={true}
                 googleMapURL={`https://maps.googleapis.com/maps/api/js?key=${config["google-api-key"]}&libraries=geometry,drawing,places`}
                 loadingElement={<div className="flex h-1/2" />}
                 containerElement={<div className="flex h-96" />}
