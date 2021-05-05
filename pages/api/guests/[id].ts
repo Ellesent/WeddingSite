@@ -3,8 +3,8 @@ import db from '../../../utils/firebasedb';
 
 const regRef = db.collection('guests');
 export default async (req: NextApiRequest, res: NextApiResponse) => {
-    const { pid } = req.query
-    const doc = await regRef.doc(pid as string).get();
+    const { id } = req.query
+    const doc = await regRef.doc(id as string).get();
 
     if (!doc.exists) res.status(400);
     

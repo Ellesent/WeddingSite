@@ -2,6 +2,7 @@ import { FirebaseAuthConsumer } from '@react-firebase/auth';
 import { useEffect, useState } from 'react';
 import firebase from "firebase/app";
 import { GuestList } from '../components/GuestList';
+import { Guest } from '../utils/Types';
 
 
 enum SideBar {
@@ -118,10 +119,30 @@ const AddGuestSection = () => {
     // add new guest to list
     useEffect(() => {
         const push = async () => {
-            // set random 
+
+            // create item
+            const newGuest: Guest = {name: partyName, numInParty: partyNumber, email: email, address: address, foodAllergies: allergies, status: 0}
+
+            const settings = {
+                method: 'POST',
+                headers: {
+                    Accept: 'application/json',
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(newGuest)
+            };
+            try {
+           const response = await fetch('/api/guests', settings);
+           const json = await response.json();
+           console.log(json);
+            }
+            catch (err) {
+                console.error(`Couldn't add user. Error is ${err}`);
+            }
+            setSubmit(false);
         }
 
-        setSubmit(false);
+        if (submit) {push()}
     }, [submit])
     return (
         <div className="flex m-5 justify-evenly flex-wrap">

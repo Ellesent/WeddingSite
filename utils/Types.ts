@@ -4,7 +4,7 @@ interface Guest {
     email: string;
     address: string;
     status: Status;
-    id: string;
+    id?: string;
     foodAllergies: string;
 
 }
