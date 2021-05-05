@@ -10,7 +10,8 @@ module.exports = {
       yellow: colors.yellow,
       coolGray: colors.coolGray,
       red: colors.red,
-      green: colors.green
+      green: colors.green,
+      gold: colors.gold
     }
   },
   variants: {
