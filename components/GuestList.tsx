@@ -3,7 +3,8 @@
 const GuestListItems = () => {
 
 
-    const exampleGuestList = [{
+    const exampleGuestList = [
+        {
         Name: "bob",
         Number: 5,
         Email: "bob@bob.com",
@@ -11,7 +12,17 @@ const GuestListItems = () => {
         Status: "Invitation Not Sent Yet",
         URL: "weddingsite/rsvp/1234",
         Allergies: "None"
-    }]
+    },
+    {
+        Name: "Alice",
+        Number: 2,
+        Email: "alice@bob.com",
+        Address: "1234 bob st. Bob, WA 12345",
+        Status: "Invitation Not Sent Yet",
+        URL: "weddingsite/rsvp/1234",
+        Allergies: "None"
+    },
+]
 
 
     return (
@@ -41,7 +52,7 @@ const GuestList = () => {
                 <div className="table-row headers divide-x border-b text-center">
                     {headers.map(header => (<a key={header} className="table-cell">{header}</a>))}
                 </div>
-                <GuestListItems></GuestListItems>
+                <GuestListItems/>
             </div>
         </div>
     )
