@@ -1,5 +1,5 @@
 import { FirebaseAuthConsumer } from '@react-firebase/auth';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import firebase from "firebase/app";
 import { GuestList } from '../components/GuestList';
 
@@ -94,14 +94,29 @@ const GuestListPanel = () => {
 }
 
 const AddGuestSection = () => {
+    const [partyName, setPartyName] = useState("");
+    const [partyNumber, setPartyNumber] = useState(0);
+    const [email, setEmail] = useState("");
+    const [address, setAddress] = useState("");
+    const [allergies, setAllergies] = useState("");
+    const [submit, setSubmit] = useState(false);
 
+    // add new guest to list
+    useEffect(() => {
+        const push = async () => {
+            // set random 
+        }
+
+        setSubmit(false);
+    }, [submit])
     return (
-        <div className="flex m-5 justify-evenly">
-            <input type="text" placeholder="Party Name" />
-            <input type="number" placeholder="# in Party"/>
-            <input type="email" placeholder="Email Address"/>
-            <input type="text" placeholder="Physical Address"/>
-            <input type="text" placeholder="Food Allergies"/>
+        <div className="flex m-5 justify-evenly flex-wrap">
+            <input type="text" placeholder="Party Name" onChange={(e) => {setPartyName(e.target.value)}}/>
+            <input type="number" placeholder="# in Party" onChange={(e) => {setPartyNumber(Number(e.target.value))}} />
+            <input type="email" placeholder="Email Address" onChange={(e) => {setEmail(e.target.value)}}/>
+            <input type="text" placeholder="Physical Address" onChange={(e) => {setAddress(e.target.value)}}/>
+            <input type="text" placeholder="Food Allergies" onChange={(e) => {setAllergies(e.target.value)}}/>
+            <button className="border bg-yellow-200" onClick={() => setSubmit(true)}>Submit</button>
         </div>
     )
 }
