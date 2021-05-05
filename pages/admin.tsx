@@ -20,6 +20,20 @@ const Admin = () => {
 
     const [adminPanelSelected, setAdminPanelSelected] = useState(SideBar.GuestList);
 
+    // check if user already signed in on component load
+    useEffect(() => {
+        firebase.auth().onAuthStateChanged((u) => {
+            if (u) {
+                //user is already signed in
+                setUser(u);
+                console.log("sdfs")
+            }
+            else {
+                // user is signed out
+            }
+        })
+    }, [])
+
     const handleSubmit = async (event) => {
         // remove previous error
         setError("");

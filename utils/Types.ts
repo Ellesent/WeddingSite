@@ -4,7 +4,7 @@ interface Guest {
     email: string;
     address: string;
     status: Status;
-    rsvpURL: string;
+    id: string;
     foodAllergies: string;
 
 }
