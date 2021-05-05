@@ -47,7 +47,7 @@ const GuestList = () => {
     const headers = ["Name", "# in Party", "Email", "Address", "Status", "RSVP URL", "Food Allergies"]
     return (
         // guest list table
-        <div className={`table w-full bg-yellow-100 m-5 border-collapse`}>
+        <div className={`table bg-yellow-100 m-5 border-collapse`}>
             <div className="table-row-group">
                 <div className="table-row headers divide-x border-b text-center">
                     {headers.map(header => (<a key={header} className="table-cell">{header}</a>))}

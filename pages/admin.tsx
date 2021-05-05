@@ -7,7 +7,7 @@ import { GuestList } from '../components/GuestList';
 enum SideBar {
     GuestList,
     VenueInformation,
-    SiteProperties
+    WebsiteProperties
 }
 
 const Admin = () => {
@@ -49,6 +49,10 @@ const Admin = () => {
             panel = <div></div>
             break;
         }
+        case SideBar.WebsiteProperties: {
+            panel = <div></div>
+            break;
+        }
         default: {
             panel = <GuestListPanel></GuestListPanel>
         }
@@ -63,7 +67,7 @@ const Admin = () => {
                 <div className="side-bar flex flex-col flex-none bg-rose-300 p-5 items-center border border-coolGray-500 rounded divide-y divide-coolGray-500">
                     <button onClick={() => {setAdminPanelSelected(SideBar.GuestList)}} className="p-5">Guest List</button>
                     <button onClick={() => {setAdminPanelSelected(SideBar.VenueInformation)}} className="p-5">Venue Information</button>
-                    <button className="p-5">Site Properties</button>
+                    <button className="p-5">Website Properties</button>
                 </div>
                 {panel}
             </div>
@@ -81,9 +85,10 @@ const Admin = () => {
 
 const GuestListPanel = () => {
     return (
-        <>
+        <div className="flex flex-col flex-auto">
             <GuestList></GuestList>
-        </>
+            <button className="border">Add Guest</button>
+        </div>
     )
 }
 
