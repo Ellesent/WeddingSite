@@ -40,7 +40,7 @@ const GuestListItems = (props: Props ) => {
                     <a className="table-cell">{guest.email}</a>
                     <a className="table-cell">{guest.address}</a>
                     <a className="table-cell">{guest.status}</a>
-                    <a className="table-cell">{`${window.location}/rsvp/${guest.id}`}</a>
+                    <a className="table-cell">{`${window.location.hostname}/rsvp/${guest.id}`}</a>
                     <a className="table-cell">{guest.foodAllergies}</a>
                 </div>
             ))}
