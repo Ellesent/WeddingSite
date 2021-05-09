@@ -1,7 +1,12 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import { Guest } from "../utils/Types";
+
+interface Props {
+    list: Guest[]
+}
 
 
-const GuestListItems = () => {
+const GuestListItems = (props: Props ) => {
 
 
     const exampleGuestList = [
@@ -28,15 +33,15 @@ const GuestListItems = () => {
 
     return (
         <>
-            {exampleGuestList.map(guest => (
-                <div className="table-row divide-x border-b text-center" key={guest.Name + guest.Email}>
-                    <a className="table-cell">{guest.Name}</a>
-                    <a className="table-cell">{guest.Number}</a>
-                    <a className="table-cell">{guest.Email}</a>
-                    <a className="table-cell">{guest.Address}</a>
-                    <a className="table-cell">{guest.Status}</a>
-                    <a className="table-cell">{guest.URL}</a>
-                    <a className="table-cell">{guest.Allergies}</a>
+            {props.list?.map(guest => (
+                <div className="table-row divide-x border-b text-center" key={guest.name + guest.email}>
+                    <a className="table-cell">{guest.name}</a>
+                    <a className="table-cell">{guest.numInParty}</a>
+                    <a className="table-cell">{guest.email}</a>
+                    <a className="table-cell">{guest.address}</a>
+                    <a className="table-cell">{guest.status}</a>
+                    <a className="table-cell">{`${window.location}/rsvp/${guest.id}`}</a>
+                    <a className="table-cell">{guest.foodAllergies}</a>
                 </div>
             ))}
         </>
@@ -46,13 +51,20 @@ const GuestListItems = () => {
 
 const GuestList = () => {
 
+    const [guestList, setGuestList] = useState<Guest[]>();
+
     // get the list of guests from the db on load
     useEffect(() => {
         const fetchData = async () => {
-
+            const response = await fetch('/api/guests', {method: 'GET'})
+            const jsonResponse = await response.json();
+            setGuestList(jsonResponse);
+            console.log(jsonResponse);
         }
         
-    })
+        fetchData();
+
+    }, [])
     const headers = ["Name", "# in Party", "Email", "Address", "Status", "RSVP URL", "Food Allergies"]
     return (
         // guest list table
@@ -61,7 +73,7 @@ const GuestList = () => {
                 <div className="table-row headers divide-x border-b text-center">
                     {headers.map(header => (<a key={header} className="table-cell">{header}</a>))}
                 </div>
-                <GuestListItems/>
+                <GuestListItems list={guestList}/>
             </div>
         </div>
     )
