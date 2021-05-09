@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 
 
 const GuestListItems = () => {
@@ -44,6 +45,14 @@ const GuestListItems = () => {
 
 
 const GuestList = () => {
+
+    // get the list of guests from the db on load
+    useEffect(() => {
+        const fetchData = async () => {
+
+        }
+        
+    })
     const headers = ["Name", "# in Party", "Email", "Address", "Status", "RSVP URL", "Food Allergies"]
     return (
         // guest list table
