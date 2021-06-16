@@ -37,3 +37,5 @@ yarn-error.log*
 # config files
 config.json
 firebase-config.ts
+adminsdk.json
+.firebase
