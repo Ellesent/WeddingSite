@@ -24,7 +24,7 @@ const NavigationBar = () => {
                 <Link href='/travel'>
                     <a className={font}>Travel</a>
                 </Link>
-                <Link href='./giftregistry'>
+                <Link href='/giftregistry'>
                     <a className={font}>Gift Registry</a>
                 </Link>
                 <Link href='/admin'>
