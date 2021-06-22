@@ -55,10 +55,16 @@ const GuestList = () => {
     // get the list of guests from the db on load
     useEffect(() => {
         const fetchData = async () => {
+            try {
             const response = await fetch('/api/guests', {method: 'GET'})
             const jsonResponse = await response.json();
             setGuestList(jsonResponse);
             console.log(jsonResponse);
+            }
+            catch (e) {
+                console.error(`Something went wrong querying for the guest list. Error is ${e}`);
+                setGuestList([]);
+            }
         }
         
         fetchData();
