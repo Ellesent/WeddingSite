@@ -40,3 +40,5 @@ firebase-config.ts
 adminsdk.json
 admintemp.json
 .firebase
+sendgrid.env
+.firebaserc
