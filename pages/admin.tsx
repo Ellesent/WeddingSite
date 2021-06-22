@@ -2,7 +2,7 @@ import { FirebaseAuthConsumer } from '@react-firebase/auth';
 import { useEffect, useState } from 'react';
 import firebase from "firebase/app";
 import { GuestList } from '../components/GuestList';
-import { Guest } from '../utils/Types';
+import { Guest, Status } from '../utils/Types';
 
 
 enum SideBar {
@@ -121,7 +121,7 @@ const AddGuestSection = () => {
         const push = async () => {
 
             // create item
-            const newGuest: Guest = {name: partyName, numInParty: partyNumber, email: email, address: address, foodAllergies: allergies, status: 0}
+            const newGuest: Guest = {name: partyName, numInParty: partyNumber, email: email, address: address, foodAllergies: allergies, status:  0}
 
             const settings = {
                 method: 'POST',

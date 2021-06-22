@@ -9,9 +9,10 @@ interface Guest {
 
 }
 
-enum Status {
-    NotSent,
-    Sent,
+export enum Status {
+    Not_Sent,
+    Save_The_Date_Sent,
+    Invitation_Sent,
     RSVPed,
     Declined
 }

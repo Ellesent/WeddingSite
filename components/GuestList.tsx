@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Guest } from "../utils/Types";
+import { Guest, Status } from "../utils/Types";
 
 interface Props {
     list: Guest[]
@@ -30,7 +30,6 @@ const GuestListItems = (props: Props ) => {
     },
 ]
 
-
     return (
         <>
             {props.list?.map(guest => (
@@ -39,7 +38,7 @@ const GuestListItems = (props: Props ) => {
                     <a className="table-cell">{guest.numInParty}</a>
                     <a className="table-cell">{guest.email}</a>
                     <a className="table-cell">{guest.address}</a>
-                    <a className="table-cell">{guest.status}</a>
+                    <a className="table-cell">{Status[guest.status]?.replaceAll('_',' ')}</a>
                     <a className="table-cell">{`${window.location.hostname}/rsvp/${guest.id}`}</a>
                     <a className="table-cell">{guest.foodAllergies}</a>
                 </div>
