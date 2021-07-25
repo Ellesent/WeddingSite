@@ -86,8 +86,8 @@ const Admin = () => {
     }
 
     const testEmail = {
-        'subject' : 'test-subject',
-        'text': 'test-text',
+        'subject' : 'Dom and Frankie\'s Save the Date',
+        'text': '',
         'html': '<strong>and easy to do anywhere, even with Node.js</strong>',
         'email': ""
     }

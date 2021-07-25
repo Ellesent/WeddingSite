@@ -12,4 +12,7 @@ module.exports = {
             
       return config
     },
+    env: {
+      EMAIL: 'noreply@domandfrankie.wedding'
+    }
   }
