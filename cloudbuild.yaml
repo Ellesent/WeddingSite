@@ -5,7 +5,7 @@ steps:
   args:
        - '-c'
        - |
-         echo $$FIREBASE_ADMIN_SDK > ./adminsdk.json
+         echo $$FIREBASE_ADMIN_SDK > ./adminsdk.json &&
          docker build -t gcr.io/wedding-site-311102/wedding-site --build-arg GOOGLE_MAPS_API_KEY=$$REACT_APP_GOOGLE_MAPS_API_KEY 
 images: ['gcr.io/wedding-site-311102/wedding-site']
 availableSecrets:
