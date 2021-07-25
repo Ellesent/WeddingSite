@@ -1,11 +1,12 @@
 steps:
-- name: 'ubuntu'
-  secretEnv: ['FIREBASE_ADMIN_SDK']
-  args: ['echo', '$$FIREBASE_ADMIN_SDK', '>', './adminsdk.json']
 - name: 'gcr.io/cloud-builders/docker'
-  secretEnv: ['REACT_APP_GOOGLE_MAPS_API_KEY']
-  args: ['build', '-t', 'gcr.io/wedding-site-311102/wedding-site', '.', '--build-arg', 'GOOGLE_MAPS_API_KEY=$$REACT_APP_GOOGLE_MAPS_API_KEY']
-
+  entrypoint: 'bash'
+  secretEnv: ['REACT_APP_GOOGLE_MAPS_API_KEY', 'FIREBASE_ADMIN_SDK']
+  args:
+       - '-c'
+       - |
+         echo $$FIREBASE_ADMIN_SDK > ./adminsdk.json
+         docker build -t gcr.io/wedding-site-311102/wedding-site --build-arg GOOGLE_MAPS_API_KEY=$$REACT_APP_GOOGLE_MAPS_API_KEY 
 images: ['gcr.io/wedding-site-311102/wedding-site']
 availableSecrets:
   secretManager:
