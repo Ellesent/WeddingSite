@@ -1,8 +1,8 @@
 steps:
 - name: 'gcr.io/cloud-builders/docker'
   secretEnv: ['REACT_APP_GOOGLE_MAPS_API_KEY']
-  args: ['build', '-t', 'gcr.io/my-project-id/myimage', '.', '--build-arg', 'GOOGLE_MAPS_API_KEY=$$REACT_APP_GOOGLE_MAPS_API_KEY']
+  args: ['build', '-t', 'gcr.io/wedding-site-311102/wedding-site', '.', '--build-arg', 'GOOGLE_MAPS_API_KEY=$$REACT_APP_GOOGLE_MAPS_API_KEY']
 availableSecrets:
   secretManager:
-  - versionName: projects/557413758637/secrets/google-maps-api-key/versions/1
+  - versionName: projects/wedding-site-311102/secrets/google-maps-api-key/versions/1
     env: 'REACT_APP_GOOGLE_MAPS_API_KEY'
