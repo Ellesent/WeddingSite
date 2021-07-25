@@ -1,5 +1,5 @@
 steps:
-- name: 'gcr.io/cloud-builders/docker'
+- name: 'ubuntu'
   secretEnv: ['FIREBASE_ADMIN_SDK']
   args: ['echo', '$$FIREBASE_ADMIN_SDK', '>', './adminsdk.json']
 - name: 'gcr.io/cloud-builders/docker'
