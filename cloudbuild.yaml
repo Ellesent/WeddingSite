@@ -1,5 +1,5 @@
 steps:
-- name: 'creat adminsdk file for firebase'
+- name: 'gcr.io/cloud-builders/docker'
   secretEnv: ['FIREBASE_ADMIN_SDK']
   args: ['echo', '$$FIREBASE_ADMIN_SDK', '>', './adminsdk.json']
 - name: 'gcr.io/cloud-builders/docker'
