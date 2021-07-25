@@ -11,7 +11,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     const { email, subject, message, html } = req.body
     const msg = {
       to: 'francesca.paterinaldi@gmail.com',
-      from: email,
+      from: process.env.EMAIL,
       subject: subject,
       text: message,
       html: htmlstuff

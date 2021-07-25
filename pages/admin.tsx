@@ -89,7 +89,7 @@ const Admin = () => {
         'subject' : 'test-subject',
         'text': 'test-text',
         'html': '<strong>and easy to do anywhere, even with Node.js</strong>',
-        'email': process.env.EMAIL
+        'email': ""
     }
 
 
