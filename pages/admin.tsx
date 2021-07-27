@@ -74,7 +74,7 @@ const Admin = () => {
 
     const test = async () => {
         try {
-            await fetch("/api/email", {
+            await fetch("/api/emails", {
               "method": "POST",
               "headers": { "content-type": "application/json" },
               "body": JSON.stringify(testEmail)
@@ -88,7 +88,6 @@ const Admin = () => {
     const testEmail = {
         'subject' : 'test-subject',
         'text': 'test-text',
-        'html': '<strong>and easy to do anywhere, even with Node.js</strong>',
         'email': 'noreply@caseyandtomgetmarried.com'
     }
 

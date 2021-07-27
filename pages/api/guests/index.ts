@@ -1,6 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 import db from '../../../utils/firebasedb';
-import { Guest } from '../../../utils/Types';
+import { Guest, Status } from '../../../utils/Types';
 
 const regRef = db.collection('guests');
 
@@ -8,6 +8,10 @@ const getAllGuests = async (): Promise<Guest[]> => {
     const snapshot = await regRef.get();
     if (snapshot.empty) return [];
     return snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() as Guest }));
+}
+
+const updateGuestStatus = async (guestId: string, status: Status) => {
+    await regRef.doc(guestId).update({ status } as Guest)
 }
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
@@ -20,4 +24,9 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
         default:
             return res.status(200).json({message: "not implemented"});
     }
+}
+
+export {
+    getAllGuests,
+    updateGuestStatus
 }
