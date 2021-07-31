@@ -27,6 +27,9 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
             case 'DELETE':
                const ans = await regRef.doc(id).delete();
                return res.status(200).json({ deleteTime: ans.writeTime, ...req.body });
+            case 'PUT':
+                 const updateAns = await regRef.doc(id).update(req.body);
+                 return res.status(200).json({ updateTime: updateAns.writeTime, ...req.body });
 
             default:
                 return res.status(200).json({ message: "not implemented" });
