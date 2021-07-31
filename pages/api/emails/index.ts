@@ -11,7 +11,7 @@ sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 const sendEmails = async (guests: Guest[], subject: string, text: string) => {
   const data: sgMail.MailDataRequired[] = guests.map(g => ({
       to: g.email,
-      from: "no-reply@domandfrankie.wedding",
+      from: process.env.EMAIL,
       subject,
       text,
       html,

@@ -1,44 +1,28 @@
 import { useEffect, useState } from "react";
 import { Guest, Status } from "../utils/Types";
+import { IconButton } from "./IconButton";
 
 interface Props {
     list: Guest[]
 }
 
 
-const GuestListItems = (props: Props ) => {
+const GuestListItems = (props: Props) => {
 
-
-    const exampleGuestList = [
-        {
-        Name: "bob",
-        Number: 5,
-        Email: "bob@bob.com",
-        Address: "1234 bob st. Bob, WA 12345",
-        Status: "Invitation Not Sent Yet",
-        URL: "weddingsite/rsvp/1234",
-        Allergies: "None"
-    },
-    {
-        Name: "Alice",
-        Number: 2,
-        Email: "alice@bob.com",
-        Address: "1234 bob st. Bob, WA 12345",
-        Status: "Invitation Not Sent Yet",
-        URL: "weddingsite/rsvp/1234",
-        Allergies: "None"
-    },
-]
 
     return (
         <>
             {props.list?.map(guest => (
                 <div className="table-row divide-x border-b text-center" key={guest.name + guest.email}>
-                    <a className="table-cell">{guest.name}</a>
+                    <a className="table-cell">
+                        <IconButton iconClassName="fas fa-edit"/>
+                        <IconButton iconClassName="fas fa-trash"/>
+                        {guest.name}
+                    </a>
                     <a className="table-cell">{guest.numInParty}</a>
                     <a className="table-cell">{guest.email}</a>
                     <a className="table-cell">{guest.address}</a>
-                    <a className="table-cell">{Status[guest.status]?.replaceAll('_',' ')}</a>
+                    <a className="table-cell">{Status[guest.status]?.replaceAll('_', ' ')}</a>
                     <a className="table-cell">{`${window.location.hostname}/rsvp/${guest.id}`}</a>
                     <a className="table-cell">{guest.foodAllergies}</a>
                 </div>
@@ -56,17 +40,17 @@ const GuestList = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-            const response = await fetch('/api/guests', {method: 'GET'})
-            const jsonResponse = await response.json();
-            setGuestList(jsonResponse);
-            console.log(jsonResponse);
+                const response = await fetch('/api/guests', { method: 'GET' })
+                const jsonResponse = await response.json();
+                setGuestList(jsonResponse);
+                console.log(jsonResponse);
             }
             catch (e) {
                 console.error(`Something went wrong querying for the guest list. Error is ${e}`);
                 setGuestList([]);
             }
         }
-        
+
         fetchData();
 
     }, [])
@@ -78,7 +62,7 @@ const GuestList = () => {
                 <div className="table-row headers divide-x border-b text-center">
                     {headers.map(header => (<a key={header} className="table-cell">{header}</a>))}
                 </div>
-                <GuestListItems list={guestList}/>
+                <GuestListItems list={guestList} />
             </div>
         </div>
     )
