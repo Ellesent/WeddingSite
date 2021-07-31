@@ -8,8 +8,8 @@ import { Guest, Status } from '../../../utils/Types';
 
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
-console.log(process.env)
 
+console.log(process.env.EMAIL)
 const sendEmails = async (guests: Guest[], subject: string, text: string) => {
   const data: sgMail.MailDataRequired[] = guests.map(g => ({
       to: g.email,
@@ -21,14 +21,13 @@ const sendEmails = async (guests: Guest[], subject: string, text: string) => {
 
   const result = await sgMail.send(data);
   console.log(result);
-  Promise.all(guests.map(g => updateGuestStatus(g.id || '', Status.Invitation_Sent)));
+  Promise.all(guests.map(g => updateGuestStatus(g.id || '', Status.Save_The_Date_Sent)));
 }
 
 const emailAll = async (subject: string, text: string) => {
   const guests = await getAllGuests();
-  const unEmailedGuests = guests.filter(g => g.status === Status.Not_Sent && g.email.includes('@'));
+  const unEmailedGuests = guests.filter(g => g.status === Status.Save_The_Date_Not_Sent && g.email.includes('@'));
   console.log(unEmailedGuests)
-  console.log(guests);
   await sendEmails(unEmailedGuests, subject, text);
 
   console.log('here');
