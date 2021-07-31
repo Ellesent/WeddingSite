@@ -144,7 +144,7 @@ const AddGuestSection = () => {
         const push = async () => {
 
             // create item
-            const newGuest: Guest = {name: partyName, numInParty: partyNumber, email: email, address: address, foodAllergies: allergies, status:  0}
+            const newGuest: Guest = {name: partyName, numInParty: partyNumber, email: email, address: address, foodAllergies: allergies, status:  Status.Save_The_Date_Not_Sent}
 
             const settings = {
                 method: 'POST',
