@@ -25,7 +25,7 @@ const GuestListItems = (props: Props) => {
                 setError(error);
                 return;
             }
-
+            // reload page if delete successful 
             router.reload();
             
         }

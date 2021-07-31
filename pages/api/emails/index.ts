@@ -8,6 +8,8 @@ import { Guest, Status } from '../../../utils/Types';
 
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
+console.log(process.env)
+
 const sendEmails = async (guests: Guest[], subject: string, text: string) => {
   const data: sgMail.MailDataRequired[] = guests.map(g => ({
       to: g.email,

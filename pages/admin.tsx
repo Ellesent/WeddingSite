@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import firebase from "firebase/app";
 import { GuestList } from '../components/GuestList';
 import { Guest, Status } from '../utils/Types';
+import { useRouter } from 'next/router';
 
 
 enum SideBar {
@@ -136,6 +137,8 @@ const AddGuestSection = () => {
     const [allergies, setAllergies] = useState("");
     const [submit, setSubmit] = useState(false);
 
+    const router = useRouter();
+    
     // add new guest to list
     useEffect(() => {
         const push = async () => {
@@ -155,6 +158,9 @@ const AddGuestSection = () => {
            const response = await fetch('/api/guests', settings);
            const json = await response.json();
            console.log(json);
+
+           // reload page
+           router.reload();
             }
             catch (err) {
                 console.error(`Couldn't add user. Error is ${err}`);
