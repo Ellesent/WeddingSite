@@ -2,14 +2,13 @@ import sgMail from '@sendgrid/mail'
 import { NextApiRequest, NextApiResponse } from 'next';
 import * as fs from 'fs';
 import path from "path";
-import html from '@/public/HtmlTemplates/savethedate.html'
+import html from '@public/HtmlTemplates/savethedate.html'
 import { getAllGuests, updateGuestStatus } from '../guests';
 import { Guest, Status } from '../../../utils/Types';
 
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
 console.log(process.env.EMAIL)
-console.log(html);
 
 const sendEmails = async (guests: Guest[], subject: string, text: string) => {
   const data: sgMail.MailDataRequired[] = guests.map(g => ({
