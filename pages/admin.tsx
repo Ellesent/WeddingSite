@@ -73,26 +73,6 @@ const Admin = () => {
         }
     }
 
-    const test = async () => {
-        try {
-            await fetch("/api/emails", {
-              "method": "POST",
-              "headers": { "content-type": "application/json" },
-              "body": JSON.stringify(testEmail)
-            })
-          } catch (error) {
-              console.error(error);
-              // toast error message. whatever you wish 
-          }
-    }
-
-    const testEmail = {
-        'subject' : 'test-subject',
-        'text': 'test-text',
-        'email': 'noreply@caseyandtomgetmarried.com'
-    }
-
-
 
     return (
         user ?
@@ -102,7 +82,6 @@ const Admin = () => {
                     <button onClick={() => { setAdminPanelSelected(SideBar.GuestList) }} className="p-5">Guest List</button>
                     <button onClick={() => { setAdminPanelSelected(SideBar.VenueInformation) }} className="p-5">Venue Information</button>
                     <button className="p-5">Website Properties</button>
-                    <button  onClick={() => test()}>Send test email</button>
                 </div>
                 {panel}
             </div>
@@ -120,11 +99,32 @@ const Admin = () => {
 
 const GuestListPanel = () => {
     const [showAddGuest, setShowAddGuest] = useState(false);
+
+
+    const sendSaveTheDate = async () => {
+        try {
+            await fetch("/api/emails", {
+              "method": "POST",
+              "headers": { "content-type": "application/json" },
+              "body": JSON.stringify(testEmail)
+            })
+          } catch (error) {
+              console.error(error);
+              // toast error message. whatever you wish 
+          }
+    }
+
+    const testEmail = {
+        'subject' : 'test-subject',
+        'text': 'test-text',
+    }
+
     return (
         <div className="flex flex-col flex-auto">
             <GuestList></GuestList>
             <button className="border-1 bg-yellow-400 justify-self-center self-center p-2" onClick={() => { setShowAddGuest(true) }}>Add Guest</button>
             {showAddGuest && <AddGuestSection />}
+            <button  onClick={() => sendSaveTheDate()}>Send Save the Dates</button>
         </div>
     )
 }
