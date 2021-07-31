@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import firebase from "firebase/app";
 import { GuestList } from '../components/GuestList';
 import { Guest, Status } from '../utils/Types';
+import { useRouter } from 'next/router';
 
 
 enum SideBar {
@@ -72,28 +73,6 @@ const Admin = () => {
         }
     }
 
-    const test = async () => {
-        try {
-            await fetch("/api/email", {
-              "method": "POST",
-              "headers": { "content-type": "application/json" },
-              "body": JSON.stringify(testEmail)
-            })
-          } catch (error) {
-              console.error(error);
-              // toast error message. whatever you wish 
-          }
-    }
-
-    const testEmail = {
-        'subject' : 'Dom and Frankie\'s Save the Date',
-        'text': '',
-        'html': '<strong>and easy to do anywhere, even with Node.js</strong>',
-        'email': ""
-    }
-
-
-
     return (
         user ?
             // Side navigation bar for admin page
@@ -102,7 +81,6 @@ const Admin = () => {
                     <button onClick={() => { setAdminPanelSelected(SideBar.GuestList) }} className="p-5">Guest List</button>
                     <button onClick={() => { setAdminPanelSelected(SideBar.VenueInformation) }} className="p-5">Venue Information</button>
                     <button className="p-5">Website Properties</button>
-                    <button  onClick={() => test()}>Send test email</button>
                 </div>
                 {panel}
             </div>
@@ -120,11 +98,35 @@ const Admin = () => {
 
 const GuestListPanel = () => {
     const [showAddGuest, setShowAddGuest] = useState(false);
+
+
+    const sendSaveTheDate = async () => {
+        try {
+           const response = await fetch("/api/emails", {
+              "method": "POST",
+              "headers": { "content-type": "application/json" },
+              "body": JSON.stringify(emailFormat)
+            })
+            console.log(response);
+          } catch (error) {
+              console.error(error);
+              // toast error message. whatever you wish 
+          }
+    }
+
+    const emailFormat = {
+        'subject' : 'Dom and Frankie\'s Save the Date',
+        'text': '',
+        'html': '<strong>and easy to do anywhere, even with Node.js</strong>',
+        'email': ""
+    }
+
     return (
         <div className="flex flex-col flex-auto">
             <GuestList></GuestList>
             <button className="border-1 bg-yellow-400 justify-self-center self-center p-2" onClick={() => { setShowAddGuest(true) }}>Add Guest</button>
             {showAddGuest && <AddGuestSection />}
+            <button className="border-1 bg-yellow-400 justify-self-center self-center p-2 m-5"  onClick={() => sendSaveTheDate()}>Send Save the Dates</button>
         </div>
     )
 }
@@ -137,6 +139,8 @@ const AddGuestSection = () => {
     const [allergies, setAllergies] = useState("");
     const [submit, setSubmit] = useState(false);
 
+    const router = useRouter();
+    
     // add new guest to list
     useEffect(() => {
         const push = async () => {
@@ -156,6 +160,9 @@ const AddGuestSection = () => {
            const response = await fetch('/api/guests', settings);
            const json = await response.json();
            console.log(json);
+
+           // reload page
+           router.reload();
             }
             catch (err) {
                 console.error(`Couldn't add user. Error is ${err}`);
