@@ -47,7 +47,7 @@ const GuestListItems = (props: Props) => {
     }
 
     const EditOnCancelHandler = async (guestID: string) => {
-
+        setGuestIDEdit("");
     }
 
 
@@ -60,7 +60,7 @@ const GuestListItems = (props: Props) => {
                     {guest.id != guestIdEdit ?
                         (<>
                             <a className="table-cell">
-                                <IconButton iconClassName="fas fa-edit"onClick={EditOnClickHandler} guestId={guest.id ? guest.id : ""}   />
+                                <IconButton iconClassName="fas fa-edit" onClick={EditOnClickHandler} guestId={guest.id ? guest.id : ""} />
                                 <IconButton iconClassName="fas fa-trash" onClick={deleteOnClickHandler} guestId={guest.id ? guest.id : ""} />
                                 {guest.name}
                             </a>
@@ -74,16 +74,16 @@ const GuestListItems = (props: Props) => {
                         :
                         (<>
                             <a className="table-cell">
-                            <IconButton iconClassName="fas fa-check-circle" guestId={guest.id ? guest.id : ""} onClick={EditOnConfirmHandler}/>
-                            <IconButton iconClassName="fas fa-times-circle" guestId={guest.id ? guest.id : ""} onClick={EditOnCancelHandler}/>
-                            {guest.name}
+                                <IconButton iconClassName="fas fa-check-circle" guestId={guest.id ? guest.id : ""} onClick={EditOnConfirmHandler} />
+                                <IconButton iconClassName="fas fa-times-circle" guestId={guest.id ? guest.id : ""} onClick={EditOnCancelHandler} />
+                                {guest.name}
                             </a>
-                            <input className="table-cell text-center" defaultValue={guest.numInParty}/>
-                            <a className="table-cell">{guest.email}</a>
-                            <a className="table-cell">{guest.address}</a>
-                            <a className="table-cell">{Status[guest.status]?.replaceAll('_', ' ')}</a>
-                            <a className="table-cell">{`${window.location.hostname}/rsvp/${guest.id}`}</a>
-                            <a className="table-cell">{guest.foodAllergies}</a>
+                            <a className="table-cell" ><input className="text-center" defaultValue={guest.numInParty} /></a>
+                            <a className="table-cell" ><input className="text-center" defaultValue={guest.email} /></a>
+                            <a className="table-cell" > <input className="text-center" defaultValue={guest.address} /></a>
+                            <a className="table-cell text-center">{Status[guest.status]?.replaceAll('_', ' ')}</a>
+                            <a className="table-cell text-center">{`${window.location.hostname}/rsvp/${guest.id}`}</a>
+                            <a className="table-cell" ><input className="text-center" defaultValue={guest.foodAllergies} /></a>
                         </>)
 
                     }

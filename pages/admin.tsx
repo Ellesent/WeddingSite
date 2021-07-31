@@ -124,7 +124,7 @@ const GuestListPanel = () => {
             <GuestList></GuestList>
             <button className="border-1 bg-yellow-400 justify-self-center self-center p-2" onClick={() => { setShowAddGuest(true) }}>Add Guest</button>
             {showAddGuest && <AddGuestSection />}
-            <button  onClick={() => sendSaveTheDate()}>Send Save the Dates</button>
+            <button className="border-1 bg-yellow-400 justify-self-center self-center p-2 m-5"  onClick={() => sendSaveTheDate()}>Send Save the Dates</button>
         </div>
     )
 }
