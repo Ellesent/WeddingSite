@@ -116,7 +116,7 @@ const GuestListPanel = () => {
 
     const emailFormat = {
         'subject' : 'Dom and Frankie\'s Save the Date',
-        'text': '',
+        'text': 'Save the Date',
         'html': '<strong>and easy to do anywhere, even with Node.js</strong>',
         'email': ""
     }
