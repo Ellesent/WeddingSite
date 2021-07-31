@@ -8,7 +8,7 @@ ENV PATH /app/node_modules/.bin:$PATH
 COPY package.json /app/
 COPY package-lock.json /app/
 COPY public/ app/public
-COPY tsconfig.json /tsconfig.json/
+COPY tsconfig.json /app/
 RUN npm install
 # copy app files and build
 COPY . /app
