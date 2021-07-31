@@ -21,7 +21,16 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
             return res.status(400);
         }
 
-        return res.status(200).json(doc.data());
+        switch (req.method) {
+            case 'POST':
+                return res.status(200).json(doc.data());
+            case 'DELETE':
+               const ans = await regRef.doc(id).delete();
+               return res.status(200).json({ deleteTime: ans.writeTime, ...req.body });
+
+            default:
+                return res.status(200).json({ message: "not implemented" });
+        }
     }
     catch (ex) {
         console.error(`Exception thrown when querying firebase - ${ex}`)

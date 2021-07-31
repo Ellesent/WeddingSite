@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Guest, Status } from "../utils/Types";
 import { IconButton } from "./IconButton";
+import router, { useRouter } from 'next/router'
 
 interface Props {
     list: Guest[]
@@ -8,6 +9,33 @@ interface Props {
 
 
 const GuestListItems = (props: Props) => {
+    const [error, setError] = useState("");
+
+    const router = useRouter();
+
+    const deleteOnClickHandler = async (guestID: string) => {
+        setError("");
+        try {
+            const response = await fetch(`/api/guests/${guestID}`, { method: 'DELETE' });
+            const jsonResponse = await response.json();
+
+            if (!response.ok) {
+                const error = `Error deleting guest: ${response.status}, ${response.statusText}`
+                console.error(error);
+                setError(error);
+                return;
+            }
+
+            router.reload();
+            
+        }
+        catch (e) {
+            const error = `Error deleting guest. ${e} `
+            console.error(error);
+            setError(error);
+            
+        }
+    }
 
 
     return (
@@ -15,8 +43,8 @@ const GuestListItems = (props: Props) => {
             {props.list?.map(guest => (
                 <div className="table-row divide-x border-b text-center" key={guest.name + guest.email}>
                     <a className="table-cell">
-                        <IconButton iconClassName="fas fa-edit"/>
-                        <IconButton iconClassName="fas fa-trash"/>
+                        {/* <IconButton iconClassName="fas fa-edit"  /> */}
+                        <IconButton iconClassName="fas fa-trash" onClick={deleteOnClickHandler} guestId={guest.id ? guest.id : ""} />
                         {guest.name}
                     </a>
                     <a className="table-cell">{guest.numInParty}</a>
@@ -27,6 +55,7 @@ const GuestListItems = (props: Props) => {
                     <a className="table-cell">{guest.foodAllergies}</a>
                 </div>
             ))}
+            {error && <span>{error}</span>}
         </>
     );
 }
