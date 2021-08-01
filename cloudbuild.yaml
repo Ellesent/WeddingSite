@@ -15,8 +15,7 @@ steps:
   - 'deploy'
   - 'wedding-site-service'
   - '--image'
-  - 'gcr.io/wedding-site-311102/wedding-site@${COMMIT_SHA}'
-  gcr.io/wedding-site-311102/wedding-site@latest
+  - 'gcr.io/wedding-site-311102/wedding-site@latest'
   - '--region'
   - 'us-central1'
   - '--platform'
