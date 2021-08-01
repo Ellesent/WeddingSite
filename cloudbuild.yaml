@@ -1,7 +1,7 @@
 steps:
 - name: 'gcr.io/cloud-builders/docker'
   entrypoint: 'bash'
-  secretEnv: ['REACT_APP_GOOGLE_MAPS_API_KEY', 'FIREBASE_ADMIN_SDK']
+  secretEnv: ['FIREBASE_ADMIN_SDK']
   args:
        - '-c'
        - |
