@@ -7,6 +7,11 @@ steps:
        - |
          echo $$FIREBASE_ADMIN_SDK > ./adminsdk.json &&
          docker build . -t gcr.io/wedding-site-311102/wedding-site
+
+# Push the container image to Container Registry
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['push', 'gcr.io/$PROJECT_ID/SERVICE-NAME:$COMMIT_SHA']
+  
  # Deploy container image to Cloud Run
 - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
   entrypoint: gcloud

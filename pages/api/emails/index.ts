@@ -1,7 +1,5 @@
 import sgMail from '@sendgrid/mail'
 import { NextApiRequest, NextApiResponse } from 'next';
-import * as fs from 'fs';
-import path from "path";
 import html from '@public/HtmlTemplates/savethedate.html'
 import { getAllGuests, updateGuestStatus } from '../guests';
 import { Guest, Status } from '../../../utils/Types';

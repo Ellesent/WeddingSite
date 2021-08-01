@@ -1,0 +1,13 @@
+@import url("https://use.fontawesome.com/releases/v5.11.1/css/all.css");
+
+body {
+    background-color: var(--grey);
+  }
+
+:root {
+    --grey: #4C5454;
+    --blue: #C0D6DF;
+    --purple: #AC7B84;
+    --green: #4DA167;
+    --brown: #551118;
+  }
