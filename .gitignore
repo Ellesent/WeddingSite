@@ -35,7 +35,6 @@ yarn-error.log*
 
 
 # config files
-config.json
 adminsdk.json
 admintemp.json
 .firebase

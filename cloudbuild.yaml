@@ -6,7 +6,7 @@ steps:
        - '-c'
        - |
          echo $$FIREBASE_ADMIN_SDK > ./adminsdk.json &&
-         docker build . -t gcr.io/wedding-site-311102/wedding-site --build-arg REACT_APP_GOOGLE_MAPS_API_KEY=$$REACT_APP_GOOGLE_MAPS_API_KEY 
+         docker build . -t gcr.io/wedding-site-311102/wedding-site
  # Deploy container image to Cloud Run
 - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
   entrypoint: gcloud
@@ -15,7 +15,7 @@ steps:
   - 'deploy'
   - 'wedding-site-service'
   - '--image'
-  - 'gcr.io/wedding-site-311102/wedding-site'
+  - 'gcr.io/wedding-site-311102/wedding-site${COMMIT_SHA}'
   - '--region'
   - 'us-central1'
   - '--platform'
@@ -23,7 +23,5 @@ steps:
 images: ['gcr.io/wedding-site-311102/wedding-site']
 availableSecrets:
   secretManager:
-  - versionName: projects/wedding-site-311102/secrets/google-maps-api-key/versions/1
-    env: 'REACT_APP_GOOGLE_MAPS_API_KEY'
   - versionName: projects/wedding-site-311102/secrets/firebase-admin-sdk/versions/1
     env: 'FIREBASE_ADMIN_SDK'
