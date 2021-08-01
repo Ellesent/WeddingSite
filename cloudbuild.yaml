@@ -10,7 +10,7 @@ steps:
 
 # Push the container image to Container Registry
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['push', 'gcr.io/wedding-site-311102/wedding-site:$COMMIT_SHA']
+  args: ['push', 'gcr.io/wedding-site-311102/wedding-site']
 
  # Deploy container image to Cloud Run
 - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
