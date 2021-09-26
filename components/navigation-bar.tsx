@@ -1,5 +1,6 @@
 
 import Link from 'next/link'
+import styles from '../styles/navigation-bar.module.css'
 
 const NavigationBar = () => {
 
@@ -7,11 +8,11 @@ const NavigationBar = () => {
     return (
         <>
             <div className="flex flex-col items-center">
-                <p className={"text-4xl " + font}>CASEY</p>
+                <p className={"text-4xl " + font}>FRANCESCA</p>
                 <p className={"text-xs " + font}>AND</p>
-                <p className={"text-4xl " + font}>TOM</p>
+                <p className={"text-4xl " + font}>DOMINIC</p>
             </div>
-            <div className="mt-5 flex flex-row justify-evenly bg-rose-300">
+            <div className={`m-5 flex flex-row justify-evenly ${styles.navigationBar}`}>
                 <Link href='/'>
                     <a className={font}>Home</a>
                 </Link>

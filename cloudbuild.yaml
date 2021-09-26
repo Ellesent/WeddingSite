@@ -18,7 +18,7 @@ steps:
   args:
   - 'run'
   - 'deploy'
-  - 'wedding-site-service'
+  - 'caseyandtomgetmarried'
   - '--image'
   - 'gcr.io/casey-wedding-site/casey-wedding-site:latest'
   - '--region'

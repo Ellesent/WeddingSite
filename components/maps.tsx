@@ -9,19 +9,14 @@ interface Props {
     mapElement: ReactElement;
 }
 
-const venueDetails= {
-    lat: 38.83398018165691,
-    lng: -104.8185433317237
-}
-
 const Maps = withScriptjs(withGoogleMap((props: Props) => {
 
     return (
         <GoogleMap
             defaultZoom={15}
-            defaultCenter={{ lat: venueDetails.lat, lng: venueDetails.lng }}
+            defaultCenter={{ lat: 47.44027027849685, lng: -122.53465527045456}}
         >
-            {props.isMarkerShown && <Marker position={{ lat: venueDetails.lat, lng: venueDetails.lng,}} title="Clay Venues" />}
+            {props.isMarkerShown && <Marker position={{lat: 47.44027027849685, lng: -122.53465527045456}} />}
         </GoogleMap>
     )
 }))
