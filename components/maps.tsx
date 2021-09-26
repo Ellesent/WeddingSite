@@ -9,15 +9,20 @@ interface Props {
     mapElement: ReactElement;
 }
 
+const venueDetails= {
+    lat: 38.83398018165691,
+    lng: -104.8185433317237
+}
+
 const Maps = withScriptjs(withGoogleMap((props: Props) => {
 
     return (
         <GoogleMap
-        defaultZoom={15}
-        defaultCenter={{ lat: 48.990517347960434, lng: -122.77349122673883}}
-    >
-        {props.isMarkerShown && <Marker position={{lat: 48.990517347960434, lng: -122.77349122673883}} />}
-    </GoogleMap>
+            defaultZoom={15}
+            defaultCenter={{ lat: venueDetails.lat, lng: venueDetails.lng }}
+        >
+            {props.isMarkerShown && <Marker position={{ lat: venueDetails.lat, lng: venueDetails.lng,}} title="Clay Venues" />}
+        </GoogleMap>
     )
 }))
 
