@@ -11,10 +11,12 @@ import '../styles/styles.css'
 function MyApp({ Component, pageProps }) {
   return (
   <Layout>
+    {// @ts-ignore
     <FirebaseAuthProvider  firebase={firebase} {...firebaseConfig}>
   <NavigationBar></NavigationBar>
   <Component {...pageProps} />
   </FirebaseAuthProvider>
+    }
   </Layout>
   )
 }

@@ -8,9 +8,9 @@ const NavigationBar = () => {
     return (
         <>
             <div className="flex flex-col items-center">
-                <p className={"text-4xl " + font}>FRANCESCA</p>
+                <p className={"text-4xl " + font}>CASEY</p>
                 <p className={"text-xs " + font}>AND</p>
-                <p className={"text-4xl " + font}>DOMINIC</p>
+                <p className={"text-4xl " + font}>TOM</p>
             </div>
             <div className={`m-5 flex flex-row justify-evenly ${styles.navigationBar}`}>
                 <Link href='/'>
