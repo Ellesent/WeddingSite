@@ -28,5 +28,5 @@ steps:
 images: ['gcr.io/casey-wedding-site/casey-wedding-site']
 availableSecrets:
   secretManager:
-  - versionName: projects/wcasey-wedding-site/casey-wedding-site/firebase-admin-sdk/versions/1
+  - versionName: projects/557413758637/secrets/firebase-admin-sdk/versions/1
     env: 'FIREBASE_ADMIN_SDK'
