@@ -1,0 +1,32 @@
+steps:
+- name: 'gcr.io/cloud-builders/docker'
+  entrypoint: 'bash'
+  secretEnv: ['FIREBASE_ADMIN_SDK']
+  args:
+       - '-c'
+       - |
+         echo $$FIREBASE_ADMIN_SDK > ./adminsdk.json &&
+         docker build . -t gcr.io/casey-wedding-site/casey-wedding-site
+
+# Push the container image to Container Registry
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['push', 'gcr.io/casey-wedding-site/casey-wedding-site']
+
+ # Deploy container image to Cloud Run
+- name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+  entrypoint: gcloud
+  args:
+  - 'run'
+  - 'deploy'
+  - 'wedding-site-service'
+  - '--image'
+  - 'gcr.io/casey-wedding-site/casey-wedding-site:latest'
+  - '--region'
+  - 'us-central1'
+  - '--platform'
+  - 'managed'
+images: ['gcr.io/casey-wedding-site/casey-wedding-site']
+availableSecrets:
+  secretManager:
+  - versionName: projects/wcasey-wedding-site/casey-wedding-site/firebase-admin-sdk/versions/1
+    env: 'FIREBASE_ADMIN_SDK'

@@ -1,0 +1,48 @@
+import sgMail from '@sendgrid/mail'
+import { NextApiRequest, NextApiResponse } from 'next';
+import html from '@public/HtmlTemplates/savethedate.html'
+import { getAllGuests, updateGuestStatus } from '../guests';
+import { Guest, Status } from '../../../utils/Types';
+
+sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+
+console.log(process.env.EMAIL)
+
+const sendEmails = async (guests: Guest[], subject: string, text: string) => {
+  const data: sgMail.MailDataRequired[] = guests.map(g => ({
+      to: g.email,
+      from: process.env.EMAIL,
+      subject,
+      text,
+      html,
+    }))
+
+  const result = await sgMail.send(data);
+  console.log(result);
+  Promise.all(guests.map(g => updateGuestStatus(g.id || '', Status.Save_The_Date_Sent)));
+}
+
+const emailAll = async (subject: string, text: string) => {
+  const guests = await getAllGuests();
+  const unEmailedGuests = guests.filter(g => g.status === Status.Save_The_Date_Not_Sent && g.email.includes('@'));
+  console.log(unEmailedGuests)
+  await sendEmails(unEmailedGuests, subject, text);
+
+  console.log('here');
+}
+
+export default async (req: NextApiRequest, res: NextApiResponse) => {
+
+  try {
+    switch (req.method) {
+      case 'POST':
+        await emailAll(req.body.subject, req.body.text);
+        return res.status(200).json({ message: "Successfully emailed all guests" });
+      default:
+        return res.status(200).json({ message: "not implemented" });
+    }
+  } catch (e) {
+    console.log(e);
+    return res.status(500).json(e);
+  }
+}

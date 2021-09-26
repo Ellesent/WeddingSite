@@ -2,7 +2,8 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths" : {
-      "@/public/*": ["public/*"]
+      "@public/*": ["public/*"],
+      "@components/*":["components/*"]
     },
     "target": "es5",
     "lib": [
@@ -12,7 +13,7 @@
     ],
     "allowJs": true,
     "skipLibCheck": true,
-    "strict": false,
+    "strict": true,
     "forceConsistentCasingInFileNames": true,
     "noEmit": true,
     "esModuleInterop": true,
