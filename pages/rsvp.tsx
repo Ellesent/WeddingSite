@@ -1,10 +1,10 @@
 const RSVP = () => {
     return (
         <div className="flex flex-col items-center p-20">
-            <p className="font-serif text-4xl flex flex-col">
-                IN ORDER TO RSVP, INPUT THE URL WRITTEN ON YOUR INVITATION
+            <p className="text-4xl flex flex-col">
+               Once Invitations are sent, you will be able to RSVP.
             <br />
-                <p className="text-base self-center">PLEASE REACH OUT TO THE COUPLE If YOU NEED HELP FINDING THE URL</p>
+                <p className="text-base self-center">Please check back soon!</p>
             </p>
         </div>
     )
