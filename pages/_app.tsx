@@ -14,8 +14,7 @@ function MyApp({ Component, pageProps }) {
   <Layout>
     {// @ts-ignore
     <FirebaseAuthProvider  firebase={firebase} {...firebaseConfig}>
-  {/* <NavigationBar></NavigationBar> */}
-  <HamburgerMenu/>
+  <NavigationBar></NavigationBar>
   <Component {...pageProps} />
   </FirebaseAuthProvider>
     }

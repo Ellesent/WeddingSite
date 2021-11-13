@@ -1,52 +1,29 @@
 import Link from 'next/link'
-import { useState } from 'react';
+import { ReactNode, useState } from 'react';
 import styles from '../styles/hamburger-menu.module.css'
 import Hamburger from 'hamburger-react'
 
-const font = "font-serif";
+interface Props  {
+    classNames?: string;
+    children?: ReactNode;
+}
 
-const HamburgerMenu = () => {
+const HamburgerMenu = (props: Props) => {
     const [isOpen, setIsOpen] = useState(false);
 
     const menuClickHandler = () => {
         setIsOpen(!isOpen);
     }
     return (
-        <div className={`flex flex-col m-8  p-3 fixed ${styles.text}`}>
-            <div className='flex content-center'>
-               <Hamburger toggled={isOpen} toggle={setIsOpen}>
-                </Hamburger>
-            <span className='px-3 self-center'>Menu</span>
+        <div className={`flex flex-col ${styles.text} ${props.classNames}`}>
+            <div className='flex content-center' onClick={menuClickHandler}>
+               <Hamburger toggled={isOpen}/>
+                <span className='px-3 self-center cursor-pointer'>Menu</span>
             </div>
-            {isOpen && <MenuItems/>}
+            {isOpen && props.children}
         </div>
         )
     };
 
-
-    const MenuItems = () => {
-        return (
-            <div className='flex flex-col'>
-                <Link href='/'>
-                    <a>Home</a>
-                </Link>
-                <Link href='/photos'>
-                    <a>Photos</a>
-                </Link>
-                <Link href='/rsvp'>
-                    <a>RSVP</a>
-                </Link>
-                <Link href='/venue'>
-                    <a>Venue</a>
-                </Link>
-                <Link href='/travel'>
-                    <a>Travel</a>
-                </Link>
-                <Link href='/giftregistry'>
-                    <a>Gift Registry</a>
-                </Link>
-            </div>
-        )
-    }
 
 export {HamburgerMenu}

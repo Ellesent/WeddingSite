@@ -2,6 +2,7 @@
 
 body {
     background-color: var(--forest-green);
+    font-family: 'blackriver-bold';
   }
 
 :root {

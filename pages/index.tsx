@@ -4,7 +4,7 @@ import Link from 'next/link'
 export default function Home() {
   return (
     <div className="flex items-center flex-col">
-      <p className="mt-5 font-serif">Spring 2022</p>
+      <p className="mt-5">Spring 2022</p>
        <h1>Under renovation - still a work in progress!</h1>
       <img className="m-5" src="/WeddingPets.png" alt="main image" width="800"/>
       <Link href="/rsvp">
