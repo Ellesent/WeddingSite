@@ -7,13 +7,15 @@ import { FirebaseAuthProvider } from '@react-firebase/auth'
 import {firebaseConfig} from "../firebase-config"
 
 import '../styles/styles.css'
+import { HamburgerMenu } from '@components/hamburger-menu'
 
 function MyApp({ Component, pageProps }) {
   return (
   <Layout>
     {// @ts-ignore
     <FirebaseAuthProvider  firebase={firebase} {...firebaseConfig}>
-  <NavigationBar></NavigationBar>
+  {/* <NavigationBar></NavigationBar> */}
+  <HamburgerMenu/>
   <Component {...pageProps} />
   </FirebaseAuthProvider>
     }
