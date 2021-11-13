@@ -12,7 +12,7 @@ const HamburgerMenu = () => {
         setIsOpen(!isOpen);
     }
     return (
-        <div className={`flex flex-col m-8  p-3 fixed`}>
+        <div className={`flex flex-col m-8  p-3 fixed ${styles.text}`}>
             <div className='flex content-center'>
                <Hamburger toggled={isOpen} toggle={setIsOpen}>
                 </Hamburger>
@@ -28,22 +28,22 @@ const HamburgerMenu = () => {
         return (
             <div className='flex flex-col'>
                 <Link href='/'>
-                    <a className={font}>Home</a>
+                    <a>Home</a>
                 </Link>
                 <Link href='/photos'>
-                    <a className={font}>Photos</a>
+                    <a>Photos</a>
                 </Link>
                 <Link href='/rsvp'>
-                    <a className={font}>RSVP</a>
+                    <a>RSVP</a>
                 </Link>
                 <Link href='/venue'>
-                    <a className={font}>Venue</a>
+                    <a>Venue</a>
                 </Link>
                 <Link href='/travel'>
-                    <a className={font}>Travel</a>
+                    <a>Travel</a>
                 </Link>
                 <Link href='/giftregistry'>
-                    <a className={font}>Gift Registry</a>
+                    <a>Gift Registry</a>
                 </Link>
             </div>
         )

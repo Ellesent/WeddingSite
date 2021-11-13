@@ -11,3 +11,8 @@ body {
     --green: #4DA167;
     --brown: #551118;
   }
+
+  @font-face {
+    font-family: 'blackriver-bold';
+    src: url('/fonts/Blackriver-Bold.ttf');
+  }

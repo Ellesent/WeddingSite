@@ -12,7 +12,7 @@ module.exports = {
       red: colors.red,
       green: colors.green,
       gold: colors.gold
-    }
+    },
   },
   variants: {
     extend: {},
