@@ -19,7 +19,7 @@ const NavigationBar = () => {
 
 const MenuItems = () => {
     return (
-        <div className={`flex flex-col absolute ${styles.menuItems}`}>
+        <div className={`flex flex-col absolute ${styles.menuItems} gap-5 text-xl`}>
             <Link href='/'>
                 <a>Home</a>
             </Link>
