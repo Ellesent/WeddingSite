@@ -6,15 +6,10 @@ import Link from 'next/link'
 const NavigationBar = () => {
 
     return (
-        <div className={`m-5 flex flex-row justify-between items-center px-3 py-1 ${styles.navigationBar} flex-nowrap flex-grow-0`}>
+        <div className={`m-5 flex flex-row justify-between items-center px-3 py-1 flex-nowrap flex-grow-0`}>
              <HamburgerMenu classNames={`flex-1 `}>
                  <MenuItems/>
              </HamburgerMenu>
-            <div className="flex flex-col items-center flex-1">
-                <p className={"text-2xl "}>CASEY</p>
-                <p className={"text-xs"}>AND</p>
-                <p className={"text-2xl"}>TOM</p>
-            </div>
             <div className='flex-1'>
 
             </div>

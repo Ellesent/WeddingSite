@@ -1,16 +1,19 @@
 @import url("https://use.fontawesome.com/releases/v5.11.1/css/all.css");
+@import url('https://fonts.googleapis.com/css2?family=Courgette&display=swap');
 
 body {
     background-color: var(--forest-green);
     font-family: 'blackriver-bold';
+    color: var(--off-white);
   }
 
 :root {
-    --forest-green: #4d6954;
+    --forest-green: #1d2c2b;
     --blue: #C0D6DF;
     --purple: #AC7B84;
     --green: #4DA167;
     --brown: #551118;
+    --off-white: #FAF9F6;
   }
 
   @font-face {

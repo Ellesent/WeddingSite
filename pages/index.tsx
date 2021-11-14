@@ -1,15 +1,10 @@
-import Image from 'next/image'
-import Link from 'next/link'
+import styles from '../styles/Home.module.css'
 
 export default function Home() {
   return (
-    <div className="flex items-center flex-col">
-      <p className="mt-5">Spring 2022</p>
-       <h1>Under renovation - still a work in progress!</h1>
-      <img className="m-5" src="/WeddingPets.png" alt="main image" width="800"/>
-      <Link href="/rsvp">
-        <button className="font-serif text-5xl border-4 border-yellow-300 p-3 m-3 border-dotted hover:bg-coolGray-100">RSVP</button>
-      </Link>
+    <div className="flex items-center flex-col gap-10 justify-center  h-full">
+     <p className="text-9xl transform-gpu -rotate-6">HOORAY!</p>
+     <p className={`${styles.subText} text-xl`}>{"Casey & Thomas are getting married on March 19th, 2022"}</p>
     </div>
   )
 }
