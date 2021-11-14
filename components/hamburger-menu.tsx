@@ -15,7 +15,7 @@ const HamburgerMenu = (props: Props) => {
         setIsOpen(!isOpen);
     }
     return (
-        <div className={`flex flex-col ${styles.text} ${props.classNames} mt-10 ml-10`}>
+        <div className={`flex flex-col ${styles.text} ${props.classNames} mt-5 ml-5`}>
             <div className='flex content-center' onClick={menuClickHandler}>
                <Hamburger rounded size={40} toggled={isOpen}/>
                 <span className='px-3 self-center cursor-pointer text-2xl'>Menu</span>
