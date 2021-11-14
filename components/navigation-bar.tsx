@@ -19,7 +19,8 @@ const NavigationBar = () => {
 
 const MenuItems = () => {
     return (
-        <div className={`flex flex-col absolute ${styles.menuItems} gap-5 text-xl`}>
+        // make the position absolute on medium sized screens and above (see tailwind docs for reference)
+        <div className={`flex flex-col relative md:absolute  ${styles.menuItems} gap-5 text-xl`}>
             <Link href='/'>
                 <a>Home</a>
             </Link>
