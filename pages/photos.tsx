@@ -1,8 +1,8 @@
+import { CustomMasonry } from "@components/CustomMasonry"
+
 const Photos = () => {
     return (
-        <div>
-
-        </div>
+       <CustomMasonry></CustomMasonry>
     )
 }
 export default Photos
