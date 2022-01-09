@@ -1,6 +1,6 @@
 import sgMail from '@sendgrid/mail'
 import { NextApiRequest, NextApiResponse } from 'next';
-import html from '@public/HtmlTemplates/savethedate.html'
+import saveTheDateHTML from '@public/HtmlTemplates/savethedate.html'
 import { getAllGuests, updateGuestStatus } from '../guests';
 import { Guest, Status } from '../../../utils/Types';
 
@@ -8,13 +8,14 @@ sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
 console.log(process.env.EMAIL)
 
-const sendEmails = async (guests: Guest[], subject: string, text: string) => {
+const sendEmails = async (guests: Guest[], subject: string, text: string, type: string) => {
+  const htmlTemplate = type == 'invite' ? '' : saveTheDateHTML;
   const data: sgMail.MailDataRequired[] = guests.map(g => ({
       to: g.email,
       from: process.env.EMAIL,
       subject,
       text,
-      html,
+      html: htmlTemplate, // TODO use string replace for dynamic URI
     }))
 
   const result = await sgMail.send(data);
@@ -22,11 +23,20 @@ const sendEmails = async (guests: Guest[], subject: string, text: string) => {
   Promise.all(guests.map(g => updateGuestStatus(g.id || '', Status.Save_The_Date_Sent)));
 }
 
-const emailAll = async (subject: string, text: string) => {
+const emailAll = async (subject: string, text: string, type: string) => {
   const guests = await getAllGuests();
-  const unEmailedGuests = guests.filter(g => g.status === Status.Save_The_Date_Not_Sent && g.email.includes('@'));
+  let unEmailedGuests = [];
+  if (type === 'invite') {
+    unEmailedGuests = guests.filter(g => g.status !== Status.Invitation_Sent && g.email.includes('@'));
+  }
+  else if (type === 'save-the-date') {
+  unEmailedGuests = guests.filter(g => g.status === Status.Save_The_Date_Not_Sent && g.email.includes('@'));
+  }
+  else {
+    throw new Error('passed in type not implemented')
+  }
   console.log(unEmailedGuests)
-  await sendEmails(unEmailedGuests, subject, text);
+  await sendEmails(unEmailedGuests, subject, text, type);
 
   console.log('here');
 }
@@ -36,7 +46,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
   try {
     switch (req.method) {
       case 'POST':
-        await emailAll(req.body.subject, req.body.text);
+        await emailAll(req.body.subject, req.body.text, req.body.type);
         return res.status(200).json({ message: "Successfully emailed all guests" });
       default:
         return res.status(200).json({ message: "not implemented" });

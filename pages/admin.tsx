@@ -101,6 +101,11 @@ const GuestListPanel = () => {
 
 
     const sendSaveTheDate = async () => {
+        const emailFormat = {
+            'subject' : 'Casey and Tom\'s Save the Date',
+            'text': 'Save the Date',
+            'type' : 'save-the-date'
+        }
         try {
            const response = await fetch("/api/emails", {
               "method": "POST",
@@ -114,9 +119,27 @@ const GuestListPanel = () => {
           }
     }
 
-    const emailFormat = {
-        'subject' : 'Casey and Tom\'s Save the Date',
-        'text': 'Save the Date'
+ 
+
+    const sendInvitation = async () => {
+        const emailFormat = {
+            'subject' : `You are invited to Casey and Tom's Wedding!`,
+            'text': 'Wedding Invite',
+            'type' : 'invite'
+        }
+
+        try {
+            const response = await fetch("/api/emails", {
+               "method": "POST",
+               "headers": { "content-type": "application/json" },
+               "body": JSON.stringify(emailFormat)
+             })
+             console.log(response);
+           } catch (error) {
+               console.error(error);
+               // toast error message. whatever you wish 
+           }
+
     }
 
     return (
@@ -125,6 +148,7 @@ const GuestListPanel = () => {
             <button className="border-1 bg-yellow-400 justify-self-center self-center p-2" onClick={() => { setShowAddGuest(true) }}>Add Guest</button>
             {showAddGuest && <AddGuestSection />}
             <button className="border-1 bg-yellow-400 justify-self-center self-center p-2 m-5"  onClick={() => sendSaveTheDate()}>Send Save the Dates</button>
+            <button className="border-1 bg-yellow-400 justify-self-center self-center p-2 m-5" onClick={() => sendInvitation()}>Send Invitations</button>
         </div>
     )
 }
