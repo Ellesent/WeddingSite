@@ -1,6 +1,6 @@
 interface Guest {
     name: string;
-    numInParty: number;
+    numInParty: number | string;
     email: string;
     address: string;
     status: Status;

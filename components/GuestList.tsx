@@ -206,6 +206,11 @@ const GuestList = () => {
     "RSVP URL",
     "Food Allergies",
   ];
+
+ const numPartiesAccepted = guestList?.filter(guest => guest.status === Status.RSVPed);
+ let numPeopleAccepted: number = 0;
+
+ numPartiesAccepted?.forEach(guest => numPeopleAccepted +=  typeof guest.numInParty == 'string' ? parseInt(guest.numInParty) : guest.numInParty);
   return (
     // guest list table
     <>
@@ -222,8 +227,9 @@ const GuestList = () => {
       </div>
     </div>
     <div className='flex flex-row justify-evenly m-5'>
-    <span className='text-xl'>{`Number Accepted: ${guestList?.filter(guest => guest.status === Status.RSVPed).length}`}</span>
-    <span  className='text-xl'>{`Number Declined: ${guestList?.filter(guest => guest.status === Status.Declined).length}`}</span>
+    <span className='text-xl'>{`Number of Parties Accepted: ${numPartiesAccepted?.length}`}</span>
+    <span className='text-xl'>{`Number of People Accepted: ${numPeopleAccepted}`}</span>
+    <span  className='text-xl'>{`Number of Parties Declined: ${guestList?.filter(guest => guest.status === Status.Declined).length}`}</span>
     </div>
     </>
   );
