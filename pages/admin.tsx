@@ -124,7 +124,7 @@ const GuestListPanel = () => {
     const sendInvitation = async () => {
         const emailFormat = {
             'subject' : `You are Invited to Casey and Tom's Wedding`,
-            'text': 'Wedding Invite',
+            'text': `Hooray! You are invited to Casey and Tom's Wedding on March 19th, 2022!`,
             'type' : 'invite'
         }
 

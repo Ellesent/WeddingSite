@@ -208,7 +208,8 @@ const GuestList = () => {
   ];
   return (
     // guest list table
-    <div className={`table bg-rose-500 m-5 border-collapse`}>
+    <>
+    <div className={`justify-self-stretch table bg-rose-500 m-5 border-collapse`}>
       <div className="table-row-group">
         <div className="table-row headers divide-x border-b text-center">
           {headers.map((header) => (
@@ -220,6 +221,11 @@ const GuestList = () => {
         <GuestListItems list={guestList} />
       </div>
     </div>
+    <div className='flex flex-row justify-evenly m-5'>
+    <span className='text-xl'>{`Number Accepted: ${guestList?.filter(guest => guest.status === Status.RSVPed).length}`}</span>
+    <span  className='text-xl'>{`Number Declined: ${guestList?.filter(guest => guest.status === Status.Declined).length}`}</span>
+    </div>
+    </>
   );
 };
 

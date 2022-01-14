@@ -16,6 +16,7 @@ const sendEmails = async (guests: Guest[], subject: string, text: string, type: 
     
   if (type === 'invite') {
     htmlTemplate = htmlTemplate.replace('replace-me', g.id);
+    htmlTemplate = htmlTemplate.replace('replace-guest', g.name);
   }
     return{
       to: g.email,
@@ -34,7 +35,7 @@ const emailAll = async (subject: string, text: string, type: string) => {
   const guests = await getAllGuests();
   let unEmailedGuests = [];
   if (type === 'invite') {
-    unEmailedGuests = guests.filter(g => g.status !== Status.Invitation_Sent && g.email.includes('@'));
+    unEmailedGuests = guests.filter(g => (g.status !== Status.Invitation_Sent && g.status !== Status.RSVPed && g.status !== Status.Declined) && g.email.includes('@'));
   }
   else if (type === 'save-the-date') {
   unEmailedGuests = guests.filter(g => g.status === Status.Save_The_Date_Not_Sent && g.email.includes('@'));
