@@ -16,6 +16,7 @@ const RSVPUnique = () => {
         const fetchGuest = async () => {
             try {
                 const response = await fetch(`/api/guests/${id}`, { method: 'GET' })
+                console.log(response);
 
                 // check if guest was found
                 if (response.status == 400) {
@@ -44,13 +45,16 @@ const RSVPUnique = () => {
                 :
                 // TODO check if the guest has RSVPd already and let them know
                 <div className="flex flex-col items-center justify-center m-5">
-                    <p>Found your guest information! Please make sure the information below is correct before RSVPing. If any of this looks incorrect please contact the Bride and Groom.</p>
+                    <p className='text-xl antialiased'>Found your guest information! Please make sure the information below is correct before RSVPing. If any of this looks incorrect please contact the Bride and Groom.</p>
                     <p className="mt-5">{`Name: ${guestInfo.name}`}</p>
                     <p>{`Number in Party: ${guestInfo.numInParty}`}</p>
                     <p>{`Email: ${guestInfo.email}`}</p>
                     <p>{`Address: ${guestInfo.address}`}</p>
                     <p>{`Food Allergies: ${guestInfo.foodAllergies}`}</p>
-                    <button className="m-5 p-2 border-2 rounded bg-yellow-500">Click HERE to RSVP</button>
+                    <div className="flex">
+                    <button className="m-5 p-2 border-2 rounded bg-yellow-600 lg:transition lg:duration-500 lg:ease-in-out lg:transform lg:hover:-translate-y-1 lg:hover:scale-110">RSVP</button>
+                    <button className="m-5 p-2 border-2 rounded bg-yellow-600 lg:transition lg:duration-500 lg:ease-in-out lg:transform lg:hover:-translate-y-1 lg:hover:scale-110">DECLINE</button>
+                    </div>
                 </div>}
         </div>
     )

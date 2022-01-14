@@ -1,6 +1,7 @@
 import sgMail from '@sendgrid/mail'
 import { NextApiRequest, NextApiResponse } from 'next';
 import saveTheDateHTML from '@public/HtmlTemplates/savethedate.html'
+import inviteHTML from '@public/HtmlTemplates/invite.html'
 import { getAllGuests, updateGuestStatus } from '../guests';
 import { Guest, Status } from '../../../utils/Types';
 
@@ -9,18 +10,24 @@ sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 console.log(process.env.EMAIL)
 
 const sendEmails = async (guests: Guest[], subject: string, text: string, type: string) => {
-  const htmlTemplate = type == 'invite' ? '' : saveTheDateHTML;
-  const data: sgMail.MailDataRequired[] = guests.map(g => ({
+  let htmlTemplate = type === 'invite' ? inviteHTML : saveTheDateHTML;
+
+  const data: sgMail.MailDataRequired[] = guests.map(g => {
+    
+  if (type === 'invite') {
+    htmlTemplate = htmlTemplate.replace('replace-me', g.id);
+  }
+    return{
       to: g.email,
       from: process.env.EMAIL,
       subject,
       text,
       html: htmlTemplate, // TODO use string replace for dynamic URI
-    }))
+    }})
 
   const result = await sgMail.send(data);
   console.log(result);
-  Promise.all(guests.map(g => updateGuestStatus(g.id || '', Status.Save_The_Date_Sent)));
+  Promise.all(guests.map(g => updateGuestStatus(g.id || '', type == 'invite' ? Status.Invitation_Sent : Status.Save_The_Date_Sent)));
 }
 
 const emailAll = async (subject: string, text: string, type: string) => {

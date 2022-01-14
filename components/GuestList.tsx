@@ -208,7 +208,7 @@ const GuestList = () => {
   ];
   return (
     // guest list table
-    <div className={`table bg-yellow-100 m-5 border-collapse`}>
+    <div className={`table bg-rose-500 m-5 border-collapse`}>
       <div className="table-row-group">
         <div className="table-row headers divide-x border-b text-center">
           {headers.map((header) => (

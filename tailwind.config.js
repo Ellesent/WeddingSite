@@ -12,7 +12,8 @@ module.exports = {
       coolGray: colors.coolGray,
       red: colors.red,
       green: colors.green,
-      gold: colors.gold
+      gold: colors.gold,
+      black: colors.black
     },
   },
   variants: {

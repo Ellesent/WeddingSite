@@ -123,7 +123,7 @@ const GuestListPanel = () => {
 
     const sendInvitation = async () => {
         const emailFormat = {
-            'subject' : `You are invited to Casey and Tom's Wedding!`,
+            'subject' : `You are Invited to Casey and Tom's Wedding`,
             'text': 'Wedding Invite',
             'type' : 'invite'
         }
@@ -195,7 +195,7 @@ const AddGuestSection = () => {
         if (submit) {push()}
     }, [submit])
     return (
-        <div className="flex m-5 justify-evenly flex-wrap">
+        <div className="flex m-5 justify-evenly flex-wrap text-black">
             <input type="text" placeholder="Party Name" onChange={(e) => {setPartyName(e.target.value)}}/>
             <input type="number" placeholder="# in Party" onChange={(e) => {setPartyNumber(Number(e.target.value))}} />
             <input type="email" placeholder="Email Address" onChange={(e) => {setEmail(e.target.value)}}/>

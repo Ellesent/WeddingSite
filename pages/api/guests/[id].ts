@@ -15,6 +15,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     }
     try {
         const doc = await regRef.doc(id).get();
+        console.log(doc);
 
         if (!doc.exists) {
             console.log("empty");
@@ -22,6 +23,8 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
         }
 
         switch (req.method) {
+            case 'GET':
+                return res.status(200).json(doc.data());
             case 'POST':
                 return res.status(200).json(doc.data());
             case 'DELETE':
