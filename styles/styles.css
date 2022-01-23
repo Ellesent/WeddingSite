@@ -1,7 +1,11 @@
 @import url("https://use.fontawesome.com/releases/v5.11.1/css/all.css");
 
 body {
-    background-color: var(--grey);
+    background-color: var(--off-white);
+  }
+
+  html {
+    scroll-behavior: smooth;
   }
 
 :root {
@@ -10,4 +14,6 @@ body {
     --purple: #AC7B84;
     --green: #4DA167;
     --brown: #551118;
+    --white: #FFFFFF;
+    --off-white: #F6F6F6;
   }

@@ -206,9 +206,15 @@ const GuestList = () => {
     "RSVP URL",
     "Food Allergies",
   ];
+
+ const numPartiesAccepted = guestList?.filter(guest => guest.status === Status.RSVPed);
+ let numPeopleAccepted: number = 0;
+
+ numPartiesAccepted?.forEach(guest => numPeopleAccepted +=  typeof guest.numInParty == 'string' ? parseInt(guest.numInParty) : guest.numInParty);
   return (
     // guest list table
-    <div className={`table bg-yellow-100 m-5 border-collapse`}>
+    <>
+    <div className={`justify-self-stretch table bg-rose-500 m-5 border-collapse`}>
       <div className="table-row-group">
         <div className="table-row headers divide-x border-b text-center">
           {headers.map((header) => (
@@ -220,6 +226,12 @@ const GuestList = () => {
         <GuestListItems list={guestList} />
       </div>
     </div>
+    <div className='flex flex-row justify-evenly m-5'>
+    <span className='text-xl'>{`Number of Parties Accepted: ${numPartiesAccepted?.length}`}</span>
+    <span className='text-xl'>{`Number of People Accepted: ${numPeopleAccepted}`}</span>
+    <span  className='text-xl'>{`Number of Parties Declined: ${guestList?.filter(guest => guest.status === Status.Declined).length}`}</span>
+    </div>
+    </>
   );
 };
 

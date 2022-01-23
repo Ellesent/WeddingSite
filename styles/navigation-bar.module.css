@@ -1,3 +1,23 @@
 .navigationBar {
-    background-color: var(--green);
+    font-family: 'Old Standard TT', serif;
+    font-style: italic;
+
 }
+.mainFont {
+    font-family: 'Old Standard TT', serif;
+}
+
+.cursiveFont {
+    font-family: 'Dancing Script', cursive;
+}
+
+.textOutline {
+    -webkit-text-stroke: 1px goldenrod;
+    -webkit-text-fill-color: grey;
+}
+
+.stick {
+    position: sticky;
+    top:0
+}
+

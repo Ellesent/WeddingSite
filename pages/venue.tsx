@@ -4,7 +4,7 @@ import config from "../config.json"
 const Venue = () => {
 
     return (
-        <div className="m-5">
+        <div className="m-5" id='venue'>
             <p>Name: The Edgewater House</p>
             <p className="pb-5">Address: 11967 Luna Vista Ave SE, Olalla, WA 98359</p>
             <p>{process.env.REACT_APP_GOOGLE_MAPS_API_KEY}</p>

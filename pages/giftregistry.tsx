@@ -1,6 +1,6 @@
 const GiftRegistry = () => {
     return (
-        <div>
+        <div id='giftregistry'>
 
         </div>
     )

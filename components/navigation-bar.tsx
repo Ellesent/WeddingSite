@@ -1,39 +1,70 @@
-
-import Link from 'next/link'
-import styles from '../styles/navigation-bar.module.css'
+import Link from "next/link";
+import Head from "next/head";
+import styles from "../styles/navigation-bar.module.css";
+import { useEffect, useState } from "react";
+import { HamburgerMenu } from "./hamburger-menu";
 
 const NavigationBar = () => {
 
-    const font = "font-serif";
-    return (
-        <>
-            <div className="flex flex-col items-center">
-                <p className={"text-4xl " + font}>FRANCESCA</p>
-                <p className={"text-xs " + font}>AND</p>
-                <p className={"text-4xl " + font}>DOMINIC</p>
-            </div>
-            <div className={`m-5 flex flex-row justify-evenly ${styles.navigationBar}`}>
-                <Link href='/'>
-                    <a className={font}>Home</a>
-                </Link>
-                <Link href='/rsvp'>
-                    <a className={font}>RSVP</a>
-                </Link>
-                <Link href='/venue'>
-                    <a className={font}>Venue</a>
-                </Link>
-                <Link href='/travel'>
-                    <a className={font}>Travel</a>
-                </Link>
-                <Link href='/giftregistry'>
-                    <a className={font}>Gift Registry</a>
-                </Link>
-                <Link href='/admin'>
-                    <a className={font}>Admin</a>
-                </Link>
-            </div>
-        </>
-    )
-}
+    const [width, setWidth] = useState<number>(0);
 
-export { NavigationBar }
+    function handleWindowSizeChange() {
+        setWidth(window.innerWidth);
+    }
+
+
+    useEffect(() => {
+        handleWindowSizeChange();
+        window.addEventListener('resize', handleWindowSizeChange);
+        return () => {
+            window.removeEventListener('resize', handleWindowSizeChange);
+        }
+    }, []);
+
+    const isMobile = width <= 768;
+
+    const links = <> <Link href="/">
+    <a>Home</a>
+  </Link>
+  <Link href="#rsvp">
+    <a >RSVP</a>
+  </Link>
+  <Link href="#venue">
+    <a >Venue</a>
+  </Link>
+  <Link href="#travel">
+    <a >Travel</a>
+  </Link>
+  <Link href="#giftregistry">
+    <a >Gift Registry</a>
+  </Link></>
+
+    const mobileNav = <HamburgerMenu>
+        {links}
+    </HamburgerMenu>
+
+    const normalNav =  <div
+    className={`m-5 flex flex-row justify-evenly ${styles.navigationBar}`}
+  >
+      {links}
+      </div>
+    
+
+  return (
+    <div>
+      <Head>
+      <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&family=Old+Standard+TT:ital@0;1&display=swap"
+          rel="stylesheet"
+        />
+      </Head>
+      <div className={`flex flex-col items-center`}>
+        <img src="/water-color-trees.png" width="400" />
+        <span className={`text-4xl ${styles.textOutline} ${styles.mainFont}`}>{`FRANCESCA & DOMINIC`}</span>
+        <span className={`${styles.cursiveFont}`}>July 23rd 2022 <span className={`text-xl`}>&middot; </span> Olalla, WA</span>
+      </div>
+     {isMobile ? mobileNav : normalNav}
+    </div>
+  );
+};
+
+export { NavigationBar };
