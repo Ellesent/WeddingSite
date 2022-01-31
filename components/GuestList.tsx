@@ -76,7 +76,7 @@ const GuestListItems = (props: Props) => {
       {props.list?.map((guest) => (
         <div
           className="table-row divide-x border-b text-center"
-          key={guest.name + guest.email}
+          key={guest.name + guest.email + guest.id}
         >
           {guest.id != guestIdEdit ? (
             <>
