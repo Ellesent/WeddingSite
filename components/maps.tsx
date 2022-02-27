@@ -26,8 +26,7 @@ const parkingDetails = {
   lng: -104.81959,
 };
 
-// @ts-ignore
-const labelAnchor = new google.maps.Point(0, 0);
+const labelAnchor = {x: 0, y:0};
 
 const Maps = withScriptjs(
   withGoogleMap((props: Props) => {
