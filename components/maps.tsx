@@ -26,6 +26,9 @@ const parkingDetails = {
   lng: -104.81959,
 };
 
+// @ts-ignore
+const labelAnchor = new google.maps.Point(0, 0);
+
 const Maps = withScriptjs(
   withGoogleMap((props: Props) => {
     return (
@@ -37,7 +40,7 @@ const Maps = withScriptjs(
           <>
             <MarkerWithLabel
               position={{ lat: venueDetails.lat, lng: venueDetails.lng }}
-              labelAnchor={new google.maps.Point(0, 0)}
+              labelAnchor={labelAnchor}
               labelStyle={{
                 backgroundColor: "red",
                 fontSize: "10px",
@@ -50,7 +53,7 @@ const Maps = withScriptjs(
             <MarkerWithLabel
               position={{ lat: parkingDetails.lat, lng: parkingDetails.lng }}
               title="Parking"
-              labelAnchor={new google.maps.Point(0, 0)}
+              labelAnchor={labelAnchor}
               labelStyle={{
                 backgroundColor: "blue",
                 fontSize: "10px",
