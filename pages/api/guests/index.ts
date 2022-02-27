@@ -7,6 +7,7 @@ const regRef = db.collection('guests');
 const getAllGuests = async (): Promise<Guest[]> => {
     const snapshot = await regRef.get();
     if (snapshot.empty) return [];
+
     return snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() as Guest }));
 }
 
