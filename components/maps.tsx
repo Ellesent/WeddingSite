@@ -11,12 +11,14 @@ interface Props {
 
 const Maps = withScriptjs(withGoogleMap((props: Props) => {
 
+
+
     return (
         <GoogleMap
             defaultZoom={15}
-            defaultCenter={{ lat: 47.44027027849685, lng: -122.53465527045456}}
+            defaultCenter={{ lat:  47.481830442998195, lng: -122.63334678803176}}
         >
-            {props.isMarkerShown && <Marker position={{lat: 47.44027027849685, lng: -122.53465527045456}} />}
+            {props.isMarkerShown && <Marker position={{lat: 4481830442998195, lng: -122.63334678803176}} />}
         </GoogleMap>
     )
 }))
