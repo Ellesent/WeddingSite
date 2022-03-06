@@ -5,6 +5,7 @@ const Venue = () => {
 
     return (
         <div className="m-5" id='venue'>
+            <span className={`text-4xl`}>-VENUE INFORMATION-</span>
             <p>Name: Cedar Springs</p>
             <p className="pb-5">Address: 7354 Bethel Burley RD SE Port Orchard, WA 98367</p>
             <p>{process.env.REACT_APP_GOOGLE_MAPS_API_KEY}</p>

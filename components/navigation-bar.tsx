@@ -60,7 +60,7 @@ const NavigationBar = () => {
       <div className={`flex flex-col items-center`}>
         <img src="/water-color-trees.png" width="400" />
         <span className={`text-4xl ${styles.textOutline} ${styles.mainFont}`}>{`FRANCESCA & DOMINIC`}</span>
-        <span className={`${styles.cursiveFont}`}>July 23rd 2022 <span className={`text-xl`}>&middot; </span> Olalla, WA</span>
+        <span className={`${styles.cursiveFont}`}>July 23rd 2022 <span className={`text-xl`}>&middot; </span> Port Orchard, WA</span>
       </div>
      {isMobile ? mobileNav : normalNav}
     </div>
