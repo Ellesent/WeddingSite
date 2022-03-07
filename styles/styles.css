@@ -2,6 +2,7 @@
 
 body {
     background-color: var(--off-white);
+    font-family: 'Old Standard TT';
   }
 
   html {
@@ -16,4 +17,9 @@ body {
     --brown: #551118;
     --white: #FFFFFF;
     --off-white: #F6F6F6;
+  }
+
+  @font-face {
+    font-family: 'Old Standard TT';
+    src: url('https://fonts.googleapis.com/css2?family=Dancing+Script&family=Old+Standard+TT:ital@0;1&display=swap');
   }

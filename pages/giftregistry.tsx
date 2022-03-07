@@ -6,7 +6,7 @@ const GiftRegistry = () => {
       <a
         href="https://www.crateandbarrel.com/gift-registry/francesca-pate-rinaldi-and-dominic-valenciana/r6446476"
         target="_blank"
-        className={`${styles.text} m-5 text-4xl underline lg:no-underline lg:hover:underline lg:transition lg:duration-500 lg:ease-in-out lg:transform lg:hover:-translate-y-1 lg:hover:scale-110`}
+        className={`m-5 text-4xl underline lg:no-underline lg:hover:underline lg:transition lg:duration-500 lg:ease-in-out lg:transform lg:hover:-translate-y-1 lg:hover:scale-110`}
       >
         Crate and Barrel Gift Registry
       </a>

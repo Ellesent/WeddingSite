@@ -26,16 +26,16 @@ const NavigationBar = () => {
     const links = <> <Link href="/">
     <a>Home</a>
   </Link>
-  <Link href="#rsvp">
+  <Link href="/#rsvp">
     <a >RSVP</a>
   </Link>
-  <Link href="#venue">
+  <Link href="/#venue">
     <a >Venue</a>
   </Link>
-  <Link href="#travel">
+  <Link href="/#travel">
     <a >Travel</a>
   </Link>
-  <Link href="#giftregistry">
+  <Link href="/#giftregistry">
     <a >Gift Registry</a>
   </Link></>
 
