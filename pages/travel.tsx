@@ -4,9 +4,9 @@ const Travel = () => {
         <div className='flex flex-col items-center mt-20 gap-5' id='travel'>
             <a className="text-2xl p-5">Cedar Springs is located in Port Orchard, WA. We recommend staying in Gig Harbor!</a>
             <div className='driving directions'>
-                <a>Add Driving Directions here if needed</a>
             </div>
             <div className='flex flex-col items-center m-10'>
+                <span className={`text-2xl`}>Gig Harbor Hotels</span>
                 <TravelItem href='https://www.wesleyinn.com/' imageRight={false} description={[
                     `The best Western has Standard rooms with larger suites for families. Non-smoking. Close to waterfront and restaurants.
                     Free parking. Trolley picks up across the street. Has a pool.`, 

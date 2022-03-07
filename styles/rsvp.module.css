@@ -1,0 +1,4 @@
+.textOutline {
+    -webkit-text-stroke: 0.5px goldenrod;
+    -webkit-text-fill-color: grey;
+}
