@@ -1,6 +1,6 @@
 // Firebase Config
 
-// // test project
+// test project
 // const firebaseConfig = {
 //   apiKey: "AIzaSyB1A8fCA2IyAp27kI52Jq6Ch33-97JkO3Q",
 //   authDomain: "wedding-site-test-74c21.firebaseapp.com",
