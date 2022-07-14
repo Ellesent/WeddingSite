@@ -1,5 +1,5 @@
 # base image
-FROM node:11.6.0
+FROM node:16.8.0
 # working directory
 WORKDIR /app
 # add binaries to $PATH
